@@ -26,7 +26,7 @@ namespace TowerDefense.AI.Scripts.States
 
         public void Initialize()
         {
-            ChangeState(EnemyState.Idle);
+            ChangeState(EnemyState.Walk);
         }
 
         public void Tick()
