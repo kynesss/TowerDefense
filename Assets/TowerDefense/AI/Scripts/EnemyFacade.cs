@@ -6,18 +6,23 @@ namespace TowerDefense.Scripts.AI
 {
     public class EnemyFacade : MonoBehaviour
     {
-        private readonly EnemyStateManager _stateManager;
-
+        private EnemyStateManager _stateManager;
         public EnemyState State => _stateManager.CurrentState;
-
-        public EnemyFacade(EnemyStateManager stateManager)
+        
+        [Inject]
+        public void Construct(EnemyStateManager stateManager)
         {
             _stateManager = stateManager;
+        }
+        
+        private void Update()
+        {
+            Debug.Log($"Current state: {State}");
         }
 
         public class Factory : PlaceholderFactory<EnemyFacade>
         {
             
-        }
+        } 
     }
 }

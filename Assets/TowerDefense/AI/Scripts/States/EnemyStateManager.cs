@@ -42,8 +42,8 @@ namespace TowerDefense.Scripts.AI.States
             
             CurrentState = state;
             
-            var newState = _stateHandlers[(int)state];
-            newState.Enter();
+            _currentStateHandler = _stateHandlers[(int)state];
+            _currentStateHandler.Enter();
         }
     }
 }

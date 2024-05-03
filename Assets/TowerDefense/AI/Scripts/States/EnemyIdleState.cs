@@ -1,4 +1,6 @@
-﻿namespace TowerDefense.Scripts.AI.States
+﻿using UnityEngine;
+
+namespace TowerDefense.Scripts.AI.States
 {
     public class EnemyIdleState : IEnemyState
     {
@@ -9,7 +11,7 @@
 
         public void Update()
         {
-            
+            Debug.Log($"Idle");
         }
 
         public void Exit()
