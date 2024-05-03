@@ -1,21 +1,23 @@
 ﻿using UnityEngine;
 
-namespace TowerDefense.Scripts.AI
+namespace TowerDefense.AI.Scripts
 {
     public class EnemySpawner
     {
-        private readonly EnemyFacade.Factory _enemyFactory;
+        private readonly Enemy.Factory _enemyFactory;
 
         private Vector2 _tempSpawnPoint = new(18f, 16f);
-        
-        public EnemySpawner(EnemyFacade.Factory enemyFactory)
+
+        private readonly Object _prefab;
+        public EnemySpawner(Enemy.Factory enemyFactory, Object prefab)
         {
             _enemyFactory = enemyFactory;
+            _prefab = prefab;
         }
 
         public void Spawn()
         {
-            var enemy = _enemyFactory.Create();
+            var enemy = _enemyFactory.Create(_prefab);
             enemy.transform.position = _tempSpawnPoint;
 
             _tempSpawnPoint += Vector2.down * 2f;

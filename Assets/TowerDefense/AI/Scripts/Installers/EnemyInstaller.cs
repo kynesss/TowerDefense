@@ -1,9 +1,9 @@
 using TowerDefense.Scripts.AI.States;
 using Zenject;
 
-namespace TowerDefense.Scripts.AI.Installers
+namespace TowerDefense.AI.Scripts.Installers
 {
-    public class EnemyInstaller : Installer
+    public class EnemyInstaller : MonoInstaller
     {
         public override void InstallBindings()
         {
