@@ -23,7 +23,7 @@ namespace TowerDefense.AI.Scripts
             switch (touch.phase)
             {
                 case TouchPhase.Began:
-                    _spawner.Spawn();
+                    _spawner.Spawn(EnemyType.Scorpion);
                     break;
                 case TouchPhase.Moved:
                     break;

@@ -4,22 +4,23 @@ namespace TowerDefense.AI.Scripts
 {
     public class EnemySpawner
     {
-        private readonly Enemy.Factory _enemyFactory;
-
+        private readonly Enemy.Factory _factory;
+        private readonly EnemyPrefabsData _prefabsData;
+        
         private Vector2 _tempSpawnPoint = new(18f, 16f);
-
-        private readonly Object _prefab;
-        public EnemySpawner(Enemy.Factory enemyFactory, Object prefab)
+        
+        public EnemySpawner(Enemy.Factory factory, EnemyPrefabsData prefabsData)
         {
-            _enemyFactory = enemyFactory;
-            _prefab = prefab;
+            _factory = factory;
+            _prefabsData = prefabsData;
         }
 
-        public void Spawn()
+        public void Spawn(EnemyType type)
         {
-            var enemy = _enemyFactory.Create(_prefab);
+            var prefab = _prefabsData.GetEnemyPrefabByType(type);
+            var enemy = _factory.Create(prefab);
+            
             enemy.transform.position = _tempSpawnPoint;
-
             _tempSpawnPoint += Vector2.down * 2f;
         }
     }

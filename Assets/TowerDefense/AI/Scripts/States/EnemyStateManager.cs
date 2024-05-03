@@ -1,7 +1,8 @@
 using System.Collections.Generic;
+using TowerDefense.Scripts.AI.States;
 using Zenject;
 
-namespace TowerDefense.Scripts.AI.States
+namespace TowerDefense.AI.Scripts.States
 {
     public class EnemyStateManager : IInitializable, ITickable
     {
