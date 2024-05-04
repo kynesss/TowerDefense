@@ -8,9 +8,13 @@ namespace TowerDefense.AI.Scripts.Installers
 {
     public class EnemyInstaller : MonoInstaller
     {
-        [SerializeField] private AIPath ai;
-        
         public override void InstallBindings()
+        {
+            BindStateMachine();
+            BindMovement();
+        }
+
+        private void BindStateMachine()
         {
             Container.BindInterfacesAndSelfTo<EnemyStateManager>().AsSingle();
             
@@ -19,9 +23,12 @@ namespace TowerDefense.AI.Scripts.Installers
             Container.Bind<EnemyFollowState>().AsSingle();
             Container.Bind<EnemyAttackState>().AsSingle();
             Container.Bind<EnemyDeathState>().AsSingle();
+        }
 
-            Container.Bind<IEnemyMovementHandler>().To<EnemyMovementHandler>().AsSingle()
-                .WithArguments(ai);
+        private void BindMovement()
+        {
+            Container.Bind<IAstarAI>().To<AIPath>().FromComponentOnRoot().AsSingle();
+            Container.Bind<IEnemyMovementHandler>().To<EnemyMovementHandler>().AsSingle();
         }
     }
 }
