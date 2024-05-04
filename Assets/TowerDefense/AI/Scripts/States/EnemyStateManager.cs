@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TowerDefense.AI.Scripts.Signals;
 using TowerDefense.Scripts.AI.States;
 using Zenject;
 
@@ -7,6 +8,7 @@ namespace TowerDefense.AI.Scripts.States
     public class EnemyStateManager : IInitializable, ITickable
     {
         private readonly List<IEnemyState> _stateHandlers;
+        private readonly SignalBus _signalBus;
 
         private IEnemyState _currentStateHandler;
         public EnemyState CurrentState { get; private set; }
@@ -16,8 +18,11 @@ namespace TowerDefense.AI.Scripts.States
             EnemyWalkState walkState,
             EnemyFollowState followState,
             EnemyAttackState attackState,
-            EnemyDeathState deathState)
+            EnemyDeathState deathState, 
+            SignalBus signalBus)
         {
+            _signalBus = signalBus;
+            
             _stateHandlers = new List<IEnemyState>()
             {
                 idleState, walkState, followState, attackState, deathState
@@ -34,17 +39,19 @@ namespace TowerDefense.AI.Scripts.States
             _currentStateHandler?.Update();
         }
 
-        public void ChangeState(EnemyState state)
+        public void ChangeState(EnemyState newState)
         {
-            if (state == CurrentState)
+            if (newState == CurrentState)
                 return;
 
+            var lastState = CurrentState;
+            CurrentState = newState;
+
             _currentStateHandler?.Exit();
-            
-            CurrentState = state;
-            
-            _currentStateHandler = _stateHandlers[(int)state];
+            _currentStateHandler = _stateHandlers[(int)newState];
             _currentStateHandler.Enter();
+            
+            _signalBus.Fire(new EnemyStateChangedSignal(lastState, newState));
         }
     }
 }

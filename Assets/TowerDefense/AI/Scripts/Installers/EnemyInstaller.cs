@@ -1,4 +1,5 @@
 using Pathfinding;
+using TowerDefense.AI.Scripts.Signals;
 using TowerDefense.AI.Scripts.States;
 using TowerDefense.Scripts.AI.States;
 using UnityEngine;
@@ -8,10 +9,21 @@ namespace TowerDefense.AI.Scripts.Installers
 {
     public class EnemyInstaller : MonoInstaller
     {
+        [SerializeField] private Animator animator;
+        
         public override void InstallBindings()
         {
+            Container.BindInterfacesTo<EnemyAnimationHandler>().AsSingle().WithArguments(animator);
+            
+            BindSignals();
             BindStateMachine();
             BindMovement();
+        }
+
+        private void BindSignals()
+        {
+            SignalBusInstaller.Install(Container);
+            Container.DeclareSignal<EnemyStateChangedSignal>();
         }
 
         private void BindStateMachine()
