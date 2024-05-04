@@ -1,21 +1,23 @@
 using System;
-using TowerDefense.AI.Scripts;
 using UnityEngine;
 using Zenject;
 
-[CreateAssetMenu(fileName = "EnemySettingsInstaller", menuName = "Installers/EnemySettingsInstaller")]
-public class EnemySettingsInstaller : ScriptableObjectInstaller<EnemySettingsInstaller>
+namespace TowerDefense.AI.Scripts.Installers
 {
-    public EnemySettings Settings;
+    [CreateAssetMenu(fileName = "EnemySettingsInstaller", menuName = "Installers/EnemySettingsInstaller")]
+    public class EnemySettingsInstaller : ScriptableObjectInstaller<EnemySettingsInstaller>
+    {
+        [SerializeField] private EnemySettings settings;
     
-    public override void InstallBindings()
-    {
-        Container.BindInstance(Settings.SomeSettings).IfNotBound();
-    }
+        public override void InstallBindings()
+        {
+            Container.BindInstance(settings.Movement).IfNotBound();
+        }
 
-    [Serializable]
-    public class EnemySettings
-    {
-        public Enemy.Settings SomeSettings;
+        [Serializable]
+        public class EnemySettings
+        {
+            public EnemyMovementHandler.Settings Movement;
+        }
     }
 }

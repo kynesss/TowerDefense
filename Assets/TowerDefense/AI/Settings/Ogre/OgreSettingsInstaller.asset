@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 126c38667b1afa84fa6ef0e94ec56566, type: 3}
   m_Name: OgreSettingsInstaller
   m_EditorClassIdentifier: 
-  Settings:
-    SomeSettings:
-      DisplayName: "\u0141ysy Grzyb"
+  settings:
+    Movement:
+      <Speed>k__BackingField: 2.5
