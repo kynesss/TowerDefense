@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scorpion
       objectReference: {fileID: 0}
+    - target: {fileID: 2102831588114990224, guid: bb1ca7af16241524baee1f48c845bc60, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 7128585db2c2bbe45b462156b085aed8, type: 2}
     - target: {fileID: 3327745525690677222, guid: bb1ca7af16241524baee1f48c845bc60, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

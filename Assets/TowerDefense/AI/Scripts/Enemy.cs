@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using TowerDefense.AI.Scripts.States;
 using TowerDefense.Scripts.AI.States;
 using UnityEngine;
@@ -24,7 +25,7 @@ namespace TowerDefense.AI.Scripts
             Debug.Log($"Current state: {State}");
         }
 
-        [ContextMenu("ChangeState")]
+        [Button("ChangeState")]
         public void ChangeState()
         {
             _stateManager.ChangeState(testState);

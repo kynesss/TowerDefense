@@ -11,7 +11,7 @@ namespace TowerDefense.AI.Scripts
         private readonly Animator _animator;
         private readonly SignalBus _signalBus;
         private int AttackKey => Animator.StringToHash("IsAttacking");
-        private int AliveKey => Animator.StringToHash("IsAlive");
+        private int DieKey => Animator.StringToHash("Die");
         private int GetHitKey => Animator.StringToHash("GetHit");
         
         public EnemyAnimationHandler(Animator animator, SignalBus signalBus)
@@ -35,7 +35,9 @@ namespace TowerDefense.AI.Scripts
             Debug.Log($"Current state: {signal.CurrentState} Previous State: {signal.PreviousState}");
             var currentState = signal.CurrentState;
             
-            _animator.SetBool(AliveKey, currentState != EnemyState.Death);
+            if (currentState == EnemyState.Death)
+                _animator.SetTrigger(DieKey);
+            
             _animator.SetBool(AttackKey, currentState == EnemyState.Attack);
         }
     }

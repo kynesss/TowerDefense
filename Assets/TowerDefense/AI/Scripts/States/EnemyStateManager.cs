@@ -38,7 +38,7 @@ namespace TowerDefense.AI.Scripts.States
         {
             _currentStateHandler?.Update();
         }
-
+        
         public void ChangeState(EnemyState newState)
         {
             if (newState == CurrentState)
