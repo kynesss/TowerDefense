@@ -24,7 +24,7 @@ namespace TowerDefense.AI.Scripts
             {
                 case TouchPhase.Began:
                     _spawner.Spawn(EnemyType.Ogre);
-                    _spawner.Spawn(EnemyType.Scorpion);
+                    //_spawner.Spawn(EnemyType.Scorpion);
                     break;
                 case TouchPhase.Moved:
                     break;

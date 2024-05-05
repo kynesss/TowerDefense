@@ -7,5 +7,15 @@ AnimatorOverrideController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: OgreAnimationController
-  m_Controller: {fileID: 0}
-  m_Clips: []
+  m_Controller: {fileID: 9100000, guid: af192ecfd7443724eba5ec127107c7cd, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 3c9879c88b0edd34e994e76d1090630a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: f38ea2f4d7cbd424197e1c9ee0f48ee2, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: ad37a7c0044ae234282ad15ddd3e6197, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: d34446e56683a174b95e0dc58d271043, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: e8bf001657e66304bb0b61fa54d111d5, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 8cbcdbd4d23b70b49a6095b9a750c31e, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: d684a66f52dfb254498785dda82aabe2, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: d4420d8e00605ad4f85f0033f0915cfe, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 814baf728c2c710468dd43cda93365eb, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: a6953407f4de3454ba9da7de8e32c452, type: 2}

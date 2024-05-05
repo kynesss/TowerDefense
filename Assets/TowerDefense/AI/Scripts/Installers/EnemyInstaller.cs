@@ -10,10 +10,12 @@ namespace TowerDefense.AI.Scripts.Installers
     public class EnemyInstaller : MonoInstaller
     {
         [SerializeField] private Animator animator;
+        [SerializeField] private SpriteRenderer spriteRenderer;
         
         public override void InstallBindings()
         {
             Container.BindInterfacesTo<EnemyAnimationHandler>().AsSingle().WithArguments(animator);
+            Container.BindInterfacesTo<EnemySpriteHandler>().AsSingle().WithArguments(spriteRenderer);
             
             BindSignals();
             BindStateMachine();

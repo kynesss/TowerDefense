@@ -7,5 +7,15 @@ AnimatorOverrideController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: ScorpionAnimationController
-  m_Controller: {fileID: 0}
-  m_Clips: []
+  m_Controller: {fileID: 9100000, guid: af192ecfd7443724eba5ec127107c7cd, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 3c9879c88b0edd34e994e76d1090630a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 3c9879c88b0edd34e994e76d1090630a, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: ad37a7c0044ae234282ad15ddd3e6197, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ad37a7c0044ae234282ad15ddd3e6197, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: e8bf001657e66304bb0b61fa54d111d5, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e8bf001657e66304bb0b61fa54d111d5, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: d684a66f52dfb254498785dda82aabe2, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: d684a66f52dfb254498785dda82aabe2, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 814baf728c2c710468dd43cda93365eb, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 814baf728c2c710468dd43cda93365eb, type: 2}
