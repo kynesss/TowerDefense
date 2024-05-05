@@ -2,7 +2,7 @@
 using UnityEngine;
 using Zenject;
 
-namespace TowerDefense.AI
+namespace TowerDefense.AI.Scripts
 {
     public class EnemySpriteHandler : ITickable
     {
@@ -26,7 +26,6 @@ namespace TowerDefense.AI
                 return;
 
             _renderer.flipX = _ai.velocity.x < 0f;
-            Debug.Log($"Velocity: {_ai.velocity.normalized.x}");
         }
     }
 }

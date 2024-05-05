@@ -1,27 +1,64 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using NaughtyAttributes;
+using UnityEngine;
+using Zenject;
 
 namespace TowerDefense.AI.Scripts
 {
-    public class EnemySpawner
+    public class EnemySpawner : MonoBehaviour
     {
-        private readonly Enemy.Factory _factory;
-        private readonly EnemyPrefabsData _prefabsData;
+        [Required, SerializeField] private EnemySpawnerData data;
+
+        private readonly Queue<EnemyType> _enemyTypeToSpawn = new();
         
-        private Vector2 _tempSpawnPoint = new(18f, 16f);
-        
-        public EnemySpawner(Enemy.Factory factory, EnemyPrefabsData prefabsData)
+        private Enemy.Factory _factory;
+        private EnemyPrefabsData _prefabsData;
+
+        [Inject]
+        public void Construct(Enemy.Factory factory, EnemyPrefabsData prefabsData)
         {
             _factory = factory;
             _prefabsData = prefabsData;
+        }
+
+        private void Awake()
+        {
+            PrepareWaveData(3);
+        }
+
+        private void OnEnable()
+        {
+            InvokeRepeating(nameof(SpawnWave), data.SpawnRate, data.SpawnRate);
+        }
+
+        private void PrepareWaveData(int waveNumber)
+        {
+            var wave = data.Waves[waveNumber].Wave;
+
+            foreach (var (type, amount) in wave)
+            {
+                for (var i = 0; i < amount; i++)
+                {
+                    _enemyTypeToSpawn.Enqueue(type);
+                }
+            }
+        }
+
+        private void SpawnWave()
+        {
+            if (_enemyTypeToSpawn.TryDequeue(out var enemyType))
+            {
+                Spawn(enemyType);
+            }
         }
 
         public void Spawn(EnemyType type)
         {
             var prefab = _prefabsData.GetEnemyPrefabByType(type);
             var enemy = _factory.Create(prefab);
-            
-            enemy.transform.position = _tempSpawnPoint;
-            _tempSpawnPoint += Vector2.down * 2f;
+
+            enemy.transform.position = transform.position;
         }
     }
 }
