@@ -7,7 +7,6 @@ namespace TowerDefense.Scripts.AI.States
     {
         private readonly IEnemyMovementHandler _movementHandler;
         private readonly Vector3 _destination;
-
         public EnemyWalkState(IEnemyMovementHandler movementHandler, Vector3 destination)
         {
             _movementHandler = movementHandler;

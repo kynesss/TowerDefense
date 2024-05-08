@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings:
     Movement:
-      <Speed>k__BackingField: 2.5
+      <Speed>k__BackingField: 5

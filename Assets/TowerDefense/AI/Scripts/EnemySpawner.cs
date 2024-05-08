@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
 using Zenject;
@@ -24,7 +23,7 @@ namespace TowerDefense.AI.Scripts
 
         private void Awake()
         {
-            PrepareWaveData(3);
+            PrepareWave(3);
         }
 
         private void OnEnable()
@@ -32,7 +31,7 @@ namespace TowerDefense.AI.Scripts
             InvokeRepeating(nameof(SpawnWave), data.SpawnRate, data.SpawnRate);
         }
 
-        private void PrepareWaveData(int waveNumber)
+        private void PrepareWave(int waveNumber)
         {
             var wave = data.Waves[waveNumber].Wave;
 
@@ -57,7 +56,7 @@ namespace TowerDefense.AI.Scripts
         {
             var prefab = _prefabsData.GetEnemyPrefabByType(type);
             var enemy = _factory.Create(prefab);
-
+            
             enemy.transform.position = transform.position;
         }
     }

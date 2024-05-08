@@ -56,6 +56,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5315582110994757835, guid: bb1ca7af16241524baee1f48c845bc60, type: 3}
+      propertyPath: startEndModifier.exactEndPoint
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5315582110994757835, guid: bb1ca7af16241524baee1f48c845bc60, type: 3}
+      propertyPath: startEndModifier.exactStartPoint
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5790256565056918659, guid: bb1ca7af16241524baee1f48c845bc60, type: 3}
       propertyPath: _scriptableObjectInstallers.Array.size
       value: 1
