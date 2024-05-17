@@ -123,63 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &264218257
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 961347206533947938, guid: b264bd4639275e147a477bc3c7a9128b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 18.98
-      objectReference: {fileID: 0}
-    - target: {fileID: 961347206533947938, guid: b264bd4639275e147a477bc3c7a9128b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 15.31
-      objectReference: {fileID: 0}
-    - target: {fileID: 961347206533947938, guid: b264bd4639275e147a477bc3c7a9128b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 961347206533947938, guid: b264bd4639275e147a477bc3c7a9128b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 961347206533947938, guid: b264bd4639275e147a477bc3c7a9128b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 961347206533947938, guid: b264bd4639275e147a477bc3c7a9128b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 961347206533947938, guid: b264bd4639275e147a477bc3c7a9128b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 961347206533947938, guid: b264bd4639275e147a477bc3c7a9128b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 961347206533947938, guid: b264bd4639275e147a477bc3c7a9128b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 961347206533947938, guid: b264bd4639275e147a477bc3c7a9128b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2878131144413020316, guid: b264bd4639275e147a477bc3c7a9128b, type: 3}
-      propertyPath: m_Name
-      value: Ogre
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b264bd4639275e147a477bc3c7a9128b, type: 3}
 --- !u!1 &401519404
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,7 +205,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 75.96, y: 62.399998, z: 0}
+  m_LocalScale: {x: 82.097534, y: 62.399998, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1591574268}
@@ -709,7 +652,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96faff2a6e4f1a1488479be9654485b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destination: {fileID: 1634235320}
 --- !u!114 &1413090000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -763,11 +705,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1591574267}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eec97965e2584317a43c77c4a0c19aa6, type: 3}
+  m_Script: {fileID: 11500000, guid: 035fa97cfb0a4115b331342580cf6dca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 73ea7fe0d4dbe984a8d459157c1dc801, type: 2}
-  _prefabsData: {fileID: 0}
+  ogrePrefab: {fileID: 568534265726402480, guid: b264bd4639275e147a477bc3c7a9128b, type: 3}
+  scorpionPrefab: {fileID: 5945079436860729843, guid: d72da158f3275ff43bf33c0a1c975089, type: 3}
 --- !u!1 &1634235318
 GameObject:
   m_ObjectHideFlags: 0
@@ -856,12 +798,12 @@ GameObject:
   - component: {fileID: 1907729887}
   - component: {fileID: 1907729888}
   m_Layer: 0
-  m_Name: EnemySpawner (1)
+  m_Name: EnemySpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1907729887
 Transform:
   m_ObjectHideFlags: 0
@@ -886,11 +828,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1907729886}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eec97965e2584317a43c77c4a0c19aa6, type: 3}
+  m_Script: {fileID: 11500000, guid: 035fa97cfb0a4115b331342580cf6dca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 73ea7fe0d4dbe984a8d459157c1dc801, type: 2}
-  _prefabsData: {fileID: 0}
+  ogrePrefab: {fileID: 568534265726402480, guid: b264bd4639275e147a477bc3c7a9128b, type: 3}
+  scorpionPrefab: {fileID: 5945079436860729843, guid: d72da158f3275ff43bf33c0a1c975089, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -900,4 +842,3 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 401519406}
   - {fileID: 1634235320}
-  - {fileID: 264218257}

@@ -1,5 +1,4 @@
-﻿using System;
-using TowerDefense.AI.Scripts.States;
+﻿using TowerDefense.AI.Scripts.States;
 using UnityEngine;
 using Zenject;
 
@@ -40,6 +39,11 @@ namespace TowerDefense.AI.Scripts
             
             previousState = currentState;
             currentState = state;
+        }
+
+        public class Factory : PlaceholderFactory<Object, EnemyStateMachine>
+        {
+            
         }
     }
 }
