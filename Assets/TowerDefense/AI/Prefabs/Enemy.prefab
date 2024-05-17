@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 8185219195619413377}
   - component: {fileID: 6007592082755248984}
   - component: {fileID: 6949932409619225179}
-  - component: {fileID: 415787087564840257}
+  - component: {fileID: 2637477961694407284}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
@@ -161,7 +161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scriptableObjectInstallers: []
   _monoInstallers:
-  - {fileID: 6269740571168808470}
+  - {fileID: 2889739822773814545}
   _installerPrefabs: []
   _autoRun: 1
   _kernel: {fileID: 0}
@@ -320,12 +320,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _components:
-  - {fileID: 415787087564840257}
+  - {fileID: 2637477961694407284}
   _identifier: 
-  _useSceneContext: 1
+  _useSceneContext: 0
   _context: {fileID: 0}
   _bindType: 0
---- !u!114 &415787087564840257
+--- !u!114 &2637477961694407284
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -334,10 +334,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 326739511034713432}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad75b76f152e1ed4c8f6a2706dcd82c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 71dca13266b44734a212d29f9b820083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testState: 0
+  previousState: 0
+  currentState: 0
 --- !u!1 &2572228647525864824
 GameObject:
   m_ObjectHideFlags: 0
@@ -347,7 +348,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8714374218131848228}
-  - component: {fileID: 6269740571168808470}
+  - component: {fileID: 2889739822773814545}
   m_Layer: 0
   m_Name: Installer
   m_TagString: Untagged
@@ -370,7 +371,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3327745525690677222}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6269740571168808470
+--- !u!114 &2889739822773814545
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -382,5 +383,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6c9ce60ae6754742bcaa4075bf01c22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 2102831588114990224}
-  spriteRenderer: {fileID: 7250985588510017749}
