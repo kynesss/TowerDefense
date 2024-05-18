@@ -1,4 +1,5 @@
-﻿using TowerDefense.AI.Scripts.States;
+﻿using EasyButtons;
+using TowerDefense.AI.Scripts.States;
 using UnityEngine;
 using Zenject;
 
@@ -20,7 +21,7 @@ namespace TowerDefense.AI.Scripts
         
         private void Start()
         {
-            ChangeState(EnemyState.Walk);
+            ChangeState(EnemyState.Idle);
         }
 
         private void Update()
@@ -28,6 +29,7 @@ namespace TowerDefense.AI.Scripts
             _currentStateEntity?.Tick();
         }
         
+        [Button]
         private void ChangeState(EnemyState state)
         {
             _currentStateEntity?.Dispose();
