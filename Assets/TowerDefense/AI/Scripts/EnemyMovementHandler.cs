@@ -23,7 +23,13 @@ namespace TowerDefense.AI.Scripts
 
         public void MoveTo(Vector3 destination)
         {
+            _ai.canMove = true;
             _ai.destination = destination;
+        }
+
+        public void Stop()
+        {
+            _ai.canMove = false;
         }
 
         [Serializable]
