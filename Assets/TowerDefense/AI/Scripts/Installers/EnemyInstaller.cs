@@ -8,13 +8,15 @@ namespace TowerDefense.AI.Scripts.Installers
     public class EnemyInstaller : MonoInstaller
     {
         [SerializeField] private AIPath aiPath;
+        [SerializeField] private Animator animator;
         
         public override void InstallBindings()
         {
             Container.Bind<EnemyStateFactory>().AsSingle();
+            Container.Bind<EnemyAnimationHandler>().AsSingle().WithArguments(animator);
             Container.Bind<IAstarAI>().FromInstance(aiPath).AsSingle();
 
-            Container.BindInterfacesAndSelfTo<EnemyMovement>().AsSingle();
+            Container.BindInterfacesAndSelfTo<EnemyMovementHandler>().AsSingle();
 
             BindFactories();
         }

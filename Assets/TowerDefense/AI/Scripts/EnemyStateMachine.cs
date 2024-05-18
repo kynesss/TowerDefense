@@ -12,7 +12,7 @@ namespace TowerDefense.AI.Scripts
         
         private EnemyStateFactory _stateFactory;
         private EnemyStateEntity _currentStateEntity;
-
+        
         [Inject]
         private void Construct(EnemyStateFactory stateFactory)
         {

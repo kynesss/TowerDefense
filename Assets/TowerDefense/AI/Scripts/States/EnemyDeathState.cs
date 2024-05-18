@@ -5,17 +5,23 @@ namespace TowerDefense.AI.Scripts.States
 {
     public class EnemyDeathState : EnemyStateEntity
     {
-        private readonly EnemyMovement _movement;
+        private readonly EnemyMovementHandler _movementHandler;
+        private readonly EnemyAnimationHandler _animationHandler;
         
-        public EnemyDeathState(EnemyStateMachine stateMachine, EnemyMovement movement) : base(stateMachine)
+        public EnemyDeathState(
+            EnemyStateMachine stateMachine, 
+            EnemyMovementHandler movementHandler, 
+            EnemyAnimationHandler animationHandler) : base(stateMachine)
         {
-            _movement = movement;
+            _movementHandler = movementHandler;
+            _animationHandler = animationHandler;
         }
 
         public override void Initialize()
         {
             Debug.Log($"Initialize Death State!");
-            _movement.Stop();
+            _movementHandler.Stop();
+            _animationHandler.PlayStateAnimation(EnemyState.Death);
         }
 
         public override void Tick()

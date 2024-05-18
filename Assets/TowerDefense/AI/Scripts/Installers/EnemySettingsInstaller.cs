@@ -19,7 +19,7 @@ namespace TowerDefense.AI.Scripts.Installers
         [Serializable]
         public class Settings
         {
-            [field: SerializeField] public EnemyMovement.Settings Movement { get; private set; }
+            [field: SerializeField] public EnemyMovementHandler.Settings Movement { get; private set; }
             [field: SerializeField] public EnemyFollowState.Settings FollowState { get; private set; }
         }
     }

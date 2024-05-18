@@ -5,17 +5,24 @@ namespace TowerDefense.AI.Scripts.States
 {
     public class EnemyWalkState : EnemyStateEntity
     {
-        private readonly EnemyMovement _movement;
+        private readonly EnemyMovementHandler _movementHandler;
         private readonly EnemyTargetDetection _targetDetection;
-        public EnemyWalkState(EnemyStateMachine stateMachine, EnemyMovement movement, EnemyTargetDetection targetDetection) : base(stateMachine)
+        private readonly EnemyAnimationHandler _animationHandler;
+
+        public EnemyWalkState(
+            EnemyStateMachine stateMachine,
+            EnemyMovementHandler movementHandler,
+            EnemyTargetDetection targetDetection, EnemyAnimationHandler animationHandler) : base(stateMachine)
         {
-            _movement = movement;
+            _movementHandler = movementHandler;
             _targetDetection = targetDetection;
+            _animationHandler = animationHandler;
         }
 
         public override void Initialize()
         {
             Debug.Log($"Initialize Walk State!");
+            _animationHandler.PlayStateAnimation(EnemyState.Walk);
         }
 
         public override void Tick()
@@ -25,8 +32,8 @@ namespace TowerDefense.AI.Scripts.States
                 StateMachine.ChangeState(EnemyState.Follow);
                 return;
             }
-            
-            _movement.MoveTo(new Vector3(-19, -16));
+
+            _movementHandler.MoveTo(new Vector3(-19, -16));
         }
 
         public override void Dispose()
@@ -36,7 +43,6 @@ namespace TowerDefense.AI.Scripts.States
 
         public class Factory : PlaceholderFactory<EnemyWalkState>
         {
-            
         }
     }
 }

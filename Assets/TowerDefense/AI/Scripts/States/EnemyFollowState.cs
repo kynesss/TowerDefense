@@ -6,17 +6,20 @@ namespace TowerDefense.AI.Scripts.States
 {
     public class EnemyFollowState : EnemyStateEntity
     {
-        private readonly EnemyMovement _movement;
+        private readonly EnemyMovementHandler _movementHandler;
+        private readonly EnemyAnimationHandler _animationHandler;
         private readonly EnemyTargetDetection _targetDetection;
         private readonly Settings _settings;
 
         public EnemyFollowState(
             EnemyStateMachine stateMachine, 
-            EnemyMovement movement,
-            EnemyTargetDetection targetDetection,
+            EnemyMovementHandler movementHandler,
+            EnemyAnimationHandler animationHandler,
+            EnemyTargetDetection targetDetection, 
             Settings settings) : base(stateMachine)
         {
-            _movement = movement;
+            _movementHandler = movementHandler;
+            _animationHandler = animationHandler;
             _targetDetection = targetDetection;
             _settings = settings;
         }
@@ -24,6 +27,7 @@ namespace TowerDefense.AI.Scripts.States
         public override void Initialize()
         {
             Debug.Log($"Initialize Follow State!");
+            _animationHandler.PlayStateAnimation(EnemyState.Follow);
         }
 
         public override void Tick()
@@ -44,7 +48,7 @@ namespace TowerDefense.AI.Scripts.States
                 return;
             }
             
-            _movement.MoveTo(targetPosition);
+            _movementHandler.MoveTo(targetPosition);
         }
 
         public override void Dispose()

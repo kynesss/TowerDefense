@@ -398,3 +398,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aiPath: {fileID: 4542572656347271507}
+  animator: {fileID: 2102831588114990224}
