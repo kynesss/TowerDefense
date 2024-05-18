@@ -1,5 +1,21 @@
 {
   "dependencies": {
+    "com.bulleador.naughtyattributes": {
+      "version": "https://github.com/bulleador/NaughtyAttributes.git#upm",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.madsbangh.easybuttons": "https://github.com/madsbangh/EasyButtons.git#upm"
+      },
+      "hash": "249ee5df80ab87e4a8e0a4f7c5ae7f44ec803c97"
+    },
+    "com.madsbangh.easybuttons": {
+      "version": "https://github.com/madsbangh/EasyButtons.git#upm",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "73d2383899210da808a1b27329cdaa8000de557b"
+    },
     "com.marijnzwemmer.unity-toolbar-extender": {
       "version": "https://github.com/marijnz/unity-toolbar-extender.git",
       "depth": 0,
