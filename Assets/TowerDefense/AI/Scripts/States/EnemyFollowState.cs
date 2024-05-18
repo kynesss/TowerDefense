@@ -59,7 +59,7 @@ namespace TowerDefense.AI.Scripts.States
         [Serializable]
         public class Settings
         {
-            [field: SerializeField] public float MaxDistanceToTarget { get; private set; }
+            [field: SerializeField] public float MaxDistanceToTarget { get; private set; } = 1.5f;
         }
 
         public class Factory : PlaceholderFactory<EnemyFollowState>
