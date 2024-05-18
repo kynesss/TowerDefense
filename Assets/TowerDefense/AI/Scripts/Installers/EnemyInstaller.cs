@@ -16,8 +16,16 @@ namespace TowerDefense.AI.Scripts.Installers
 
             Container.BindInterfacesAndSelfTo<EnemyMovementHandler>().AsSingle();
 
+            BindFactories();
+        }
+
+        private void BindFactories()
+        {
             Container.BindFactory<EnemyIdleState, EnemyIdleState.Factory>();
             Container.BindFactory<EnemyWalkState, EnemyWalkState.Factory>();
+            Container.BindFactory<EnemyFollowState, EnemyFollowState.Factory>();
+            Container.BindFactory<EnemyAttackState, EnemyAttackState.Factory>();
+            Container.BindFactory<EnemyDeathState, EnemyDeathState.Factory>();
         }
     }
 }
