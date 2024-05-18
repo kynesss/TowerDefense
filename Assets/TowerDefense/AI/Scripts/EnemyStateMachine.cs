@@ -17,20 +17,17 @@ namespace TowerDefense.AI.Scripts
         {
             _stateFactory = stateFactory;
         }
-
+        
         private void Start()
         {
-            ChangeState(EnemyState.Idle);
+            ChangeState(EnemyState.Walk);
         }
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                ChangeState(EnemyState.Walk);
-            }
+            _currentStateEntity?.Tick();
         }
-
+        
         private void ChangeState(EnemyState state)
         {
             _currentStateEntity?.Dispose();
