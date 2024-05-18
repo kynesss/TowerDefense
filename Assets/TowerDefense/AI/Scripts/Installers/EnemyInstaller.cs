@@ -12,10 +12,10 @@ namespace TowerDefense.AI.Scripts.Installers
         public override void InstallBindings()
         {
             Container.Bind<EnemyStateFactory>().AsSingle();
-            Container.Bind<EnemyMovementHandler>().AsSingle();
-
             Container.Bind<IAstarAI>().FromInstance(aiPath).AsSingle();
-            
+
+            Container.BindInterfacesAndSelfTo<EnemyMovementHandler>().AsSingle();
+
             Container.BindFactory<EnemyIdleState, EnemyIdleState.Factory>();
             Container.BindFactory<EnemyWalkState, EnemyWalkState.Factory>();
         }

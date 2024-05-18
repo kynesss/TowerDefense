@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 126c38667b1afa84fa6ef0e94ec56566, type: 3}
+  m_Script: {fileID: 11500000, guid: fcb351a193b80c04e89e094a62044a27, type: 3}
   m_Name: ScorpionSettingsInstaller
   m_EditorClassIdentifier: 
   settings:
-    Movement:
-      <Speed>k__BackingField: 5
+    <Movement>k__BackingField:
+      <Speed>k__BackingField: 0
