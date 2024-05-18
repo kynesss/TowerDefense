@@ -5,13 +5,17 @@ namespace TowerDefense.AI.Scripts.States
 {
     public class EnemyAttackState : EnemyStateEntity
     {
-        public EnemyAttackState(EnemyStateMachine stateMachine) : base(stateMachine)
+        private readonly EnemyMovement _movement;
+        
+        public EnemyAttackState(EnemyStateMachine stateMachine, EnemyMovement movement) : base(stateMachine)
         {
+            _movement = movement;
         }
 
         public override void Initialize()
         {
             Debug.Log($"Initialize Attack State!");
+            _movement.Stop();
         }
 
         public override void Tick()

@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ogre
       objectReference: {fileID: 0}
+    - target: {fileID: 2040283159758115766, guid: bb1ca7af16241524baee1f48c845bc60, type: 3}
+      propertyPath: m_Radius
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2102831588114990224, guid: bb1ca7af16241524baee1f48c845bc60, type: 3}
       propertyPath: m_Controller
       value: 

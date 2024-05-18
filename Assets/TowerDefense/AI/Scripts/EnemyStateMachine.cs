@@ -21,7 +21,7 @@ namespace TowerDefense.AI.Scripts
         
         private void Start()
         {
-            ChangeState(EnemyState.Idle);
+            ChangeState(EnemyState.Walk);
         }
 
         private void Update()
@@ -30,7 +30,7 @@ namespace TowerDefense.AI.Scripts
         }
         
         [Button]
-        private void ChangeState(EnemyState state)
+        internal void ChangeState(EnemyState state)
         {
             _currentStateEntity?.Dispose();
             _currentStateEntity = _stateFactory.CreateState(state);

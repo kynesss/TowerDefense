@@ -15,3 +15,5 @@ MonoBehaviour:
   settings:
     <Movement>k__BackingField:
       <Speed>k__BackingField: 5
+    <FollowState>k__BackingField:
+      <MaxDistanceToTarget>k__BackingField: 0.5

@@ -5,10 +5,12 @@ namespace TowerDefense.AI.Scripts.States
 {
     public class EnemyWalkState : EnemyStateEntity
     {
-        private readonly EnemyMovementHandler _movementHandler;
-        public EnemyWalkState(EnemyStateMachine stateMachine, EnemyMovementHandler movementHandler) : base(stateMachine)
+        private readonly EnemyMovement _movement;
+        private readonly EnemyTargetDetection _targetDetection;
+        public EnemyWalkState(EnemyStateMachine stateMachine, EnemyMovement movement, EnemyTargetDetection targetDetection) : base(stateMachine)
         {
-            _movementHandler = movementHandler;
+            _movement = movement;
+            _targetDetection = targetDetection;
         }
 
         public override void Initialize()
@@ -18,7 +20,13 @@ namespace TowerDefense.AI.Scripts.States
 
         public override void Tick()
         {
-            _movementHandler.MoveTo(new Vector3(-19, -16));
+            if (_targetDetection.HasTarget)
+            {
+                StateMachine.ChangeState(EnemyState.Follow);
+                return;
+            }
+            
+            _movement.MoveTo(new Vector3(-19, -16));
         }
 
         public override void Dispose()

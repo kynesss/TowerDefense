@@ -14,7 +14,7 @@ namespace TowerDefense.AI.Scripts.Installers
             Container.Bind<EnemyStateFactory>().AsSingle();
             Container.Bind<IAstarAI>().FromInstance(aiPath).AsSingle();
 
-            Container.BindInterfacesAndSelfTo<EnemyMovementHandler>().AsSingle();
+            Container.BindInterfacesAndSelfTo<EnemyMovement>().AsSingle();
 
             BindFactories();
         }

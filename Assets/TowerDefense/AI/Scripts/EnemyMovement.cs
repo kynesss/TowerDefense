@@ -5,12 +5,12 @@ using Zenject;
 
 namespace TowerDefense.AI.Scripts
 {
-    public class EnemyMovementHandler : IInitializable
+    public class EnemyMovement : IInitializable
     {
         private readonly IAstarAI _ai;
         private readonly Settings _settings;
 
-        public EnemyMovementHandler(IAstarAI ai, Settings settings)
+        public EnemyMovement(IAstarAI ai, Settings settings)
         {
             _ai = ai;
             _settings = settings;
@@ -31,7 +31,7 @@ namespace TowerDefense.AI.Scripts
         {
             _ai.canMove = false;
         }
-
+        
         [Serializable]
         public class Settings
         {
