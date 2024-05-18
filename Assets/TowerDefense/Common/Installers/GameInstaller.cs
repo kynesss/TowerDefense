@@ -2,7 +2,7 @@ using TowerDefense.AI.Scripts;
 using UnityEngine;
 using Zenject;
 
-namespace TowerDefense.Scripts.Common.Installers
+namespace TowerDefense.Common.Installers
 {
     public class GameInstaller : MonoInstaller
     {

@@ -1,7 +1,6 @@
-using UnityEngine;
 using Zenject;
 
-namespace TowerDefense.Scripts.Utils.Installers
+namespace TowerDefense.Utils.Installers
 {
     public class UtilsInstaller : MonoInstaller
     {

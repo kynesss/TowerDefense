@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace TowerDefense.Scripts.Utils
+namespace TowerDefense.Utils
 {
     [ExecuteAlways, RequireComponent(typeof(SpriteRenderer))]
     public class SpriteScaler : MonoBehaviour
