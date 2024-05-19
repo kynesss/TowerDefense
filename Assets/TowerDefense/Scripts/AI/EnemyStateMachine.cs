@@ -11,12 +11,17 @@ namespace TowerDefense.Scripts.AI
         [SerializeField] private EnemyState currentState;
         
         private EnemyStateFactory _stateFactory;
+        private EnemyHealthHandler _healthHandler;
         private EnemyStateEntity _currentStateEntity;
+        public bool IsAlive => _healthHandler.IsAlive;
         
         [Inject]
-        private void Construct(EnemyStateFactory stateFactory)
+        private void Construct(
+            EnemyStateFactory stateFactory,
+            EnemyHealthHandler healthHandler)
         {
             _stateFactory = stateFactory;
+            _healthHandler = healthHandler;
         }
         
         private void Start()
@@ -26,10 +31,16 @@ namespace TowerDefense.Scripts.AI
 
         private void Update()
         {
+            if (!IsAlive && currentState != EnemyState.Death)
+            {
+                ChangeState(EnemyState.Death);
+                return;
+            }
+            
             _currentStateEntity?.Tick();
         }
         
-        [Button]
+        [Button("ChangeState")]
         internal void ChangeState(EnemyState state)
         {
             _currentStateEntity?.Dispose();
@@ -38,6 +49,12 @@ namespace TowerDefense.Scripts.AI
             
             previousState = currentState;
             currentState = state;
+        }
+
+        [Button("TakeDamage")]
+        internal void TakeDamage(float damage)
+        {
+            _healthHandler.TakeDamage(damage);
         }
 
         public class Factory : PlaceholderFactory<Object, EnemyStateMachine>

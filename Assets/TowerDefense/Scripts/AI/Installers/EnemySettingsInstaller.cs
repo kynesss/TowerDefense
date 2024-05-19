@@ -13,6 +13,7 @@ namespace TowerDefense.Scripts.AI.Installers
         public override void InstallBindings()
         {
             Container.BindInstance(settings.Movement).IfNotBound();
+            Container.BindInstance(settings.Health).IfNotBound();
             Container.BindInstance(settings.FollowState).IfNotBound();
         }
 
@@ -20,6 +21,7 @@ namespace TowerDefense.Scripts.AI.Installers
         public class Settings
         {
             [field: SerializeField] public EnemyMovementHandler.Settings Movement { get; private set; }
+            [field: SerializeField] public EnemyHealthHandler.Settings Health { get; private set; }
             [field: SerializeField] public EnemyFollowState.Settings FollowState { get; private set; }
         }
     }
