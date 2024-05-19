@@ -592,7 +592,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1285583547
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -836,8 +836,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1591574268}
   - component: {fileID: 1591574269}
+  - component: {fileID: 1591574270}
   m_Layer: 0
-  m_Name: EnemySpawner
+  m_Name: WaveSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -870,8 +871,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 035fa97cfb0a4115b331342580cf6dca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ogrePrefab: {fileID: 568534265726402480, guid: b264bd4639275e147a477bc3c7a9128b, type: 3}
-  scorpionPrefab: {fileID: 5945079436860729843, guid: d72da158f3275ff43bf33c0a1c975089, type: 3}
+  id: 0
+--- !u!114 &1591574270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591574267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0166d8ff8d905b048b2448179e1f5d11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _components:
+  - {fileID: 1591574269}
+  _identifier: 
+  _useSceneContext: 1
+  _context: {fileID: 0}
+  _bindType: 0
 --- !u!1 &1634235318
 GameObject:
   m_ObjectHideFlags: 0
@@ -959,13 +977,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1907729887}
   - component: {fileID: 1907729888}
+  - component: {fileID: 1907729889}
   m_Layer: 0
-  m_Name: EnemySpawner
+  m_Name: WaveSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1907729887
 Transform:
   m_ObjectHideFlags: 0
@@ -993,8 +1012,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 035fa97cfb0a4115b331342580cf6dca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ogrePrefab: {fileID: 568534265726402480, guid: b264bd4639275e147a477bc3c7a9128b, type: 3}
-  scorpionPrefab: {fileID: 5945079436860729843, guid: d72da158f3275ff43bf33c0a1c975089, type: 3}
+  id: 1
+--- !u!114 &1907729889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1907729886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0166d8ff8d905b048b2448179e1f5d11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _components:
+  - {fileID: 1907729888}
+  _identifier: 
+  _useSceneContext: 1
+  _context: {fileID: 0}
+  _bindType: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

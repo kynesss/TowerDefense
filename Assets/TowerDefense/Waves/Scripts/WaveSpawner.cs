@@ -7,10 +7,10 @@ namespace TowerDefense.Waves.Scripts
 {
     public class WaveSpawner : MonoBehaviour
     {
-        [SerializeField] private int id;
-        
         private List<Wave> _waves;
         private EnemyStateMachine.Factory _enemyFactory;
+
+        private int _id;
 
         [Inject]
         private void Construct(List<Wave> waves, EnemyStateMachine.Factory enemyFactory)
@@ -22,13 +22,18 @@ namespace TowerDefense.Waves.Scripts
         private void Awake()
         {
             var wave = _waves[0];
-            var waveData = wave.WaveData[id];
+            var waveData = wave.WaveData[_id];
             var waveElements = waveData.Elements;
             
             foreach (var element in waveElements)
             {
-                Debug.Log($"Spawner: {id} has {element.Count} {element.Prefab.name} prefab!");
+                Debug.Log($"Spawner: {_id} has {element.Count} {element.Prefab.name} prefab!");
             }
+        }
+
+        internal void SetId(int id)
+        {
+            _id = id;
         }
     }
 }

@@ -1,4 +1,5 @@
 using TowerDefense.AI.Scripts;
+using TowerDefense.Waves.Scripts;
 using UnityEngine;
 using Zenject;
 
@@ -8,6 +9,8 @@ namespace TowerDefense.Common.Installers
     {
         public override void InstallBindings()
         {
+            Container.Bind<WaveManager>().AsSingle();
+            
             Container.BindFactory<Object, EnemyStateMachine, EnemyStateMachine.Factory>()
                 .FromFactory<PrefabFactory<EnemyStateMachine>>();
         }
