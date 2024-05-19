@@ -14,14 +14,17 @@ namespace TowerDefense.Waves.Scripts
         
         public WaveManager(List<Wave> waves, WaveSpawner[] spawners)
         {
-            _spawners = spawners;
             _waves = waves;
-            
-            Debug.Log($"Bind wave manager");
-            
+            _spawners = spawners;
+
             UpdateSpawners();
         }
-
+        
+        public void UpdateWave()
+        {
+            _currentWaveId++;
+        }
+        
         private void UpdateSpawners()
         {
             for (var id = 0; id < _spawners.Length; id++)
@@ -30,14 +33,12 @@ namespace TowerDefense.Waves.Scripts
                 var waveData = CurrentWave.WaveData[id];
                 
                 spawner.SetWaveData(waveData);
-                
-                Debug.Log($"Id: {id}");
             }
         }
-        
+
         public void Initialize()
         {
-            Debug.Log($"Elo");
+            
         }
     }
 }
