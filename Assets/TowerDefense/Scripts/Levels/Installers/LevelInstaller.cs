@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using TowerDefense.Waves.Scripts;
+using TowerDefense.Scripts.Waves;
 using UnityEngine;
 using Zenject;
 
-namespace TowerDefense.Levels.Installers
+namespace TowerDefense.Scripts.Levels.Installers
 {
     [CreateAssetMenu(fileName = "LevelInstaller", menuName = "Installers/LevelInstaller")]
     public class LevelInstaller : ScriptableObjectInstaller<LevelInstaller>

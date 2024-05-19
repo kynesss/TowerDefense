@@ -1,4 +1,4 @@
-﻿namespace TowerDefense.Utils
+﻿namespace TowerDefense.Scripts.Utils
 {
     public class ScreenResolutionChangedEventArgs
     {

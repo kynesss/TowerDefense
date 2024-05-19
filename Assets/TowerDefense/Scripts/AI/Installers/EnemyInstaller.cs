@@ -1,9 +1,9 @@
 using Pathfinding;
-using TowerDefense.AI.Scripts.States;
+using TowerDefense.Scripts.AI.States;
 using UnityEngine;
 using Zenject;
 
-namespace TowerDefense.AI.Scripts.Installers
+namespace TowerDefense.Scripts.AI.Installers
 {
     public class EnemyInstaller : MonoInstaller
     {

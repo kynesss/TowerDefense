@@ -1,7 +1,6 @@
-using TowerDefense.Scripts;
 using UnityEngine;
 
-namespace TowerDefense.AI.Scripts
+namespace TowerDefense.Scripts.AI
 {
     public class EnemyTargetDetection : MonoBehaviour
     {

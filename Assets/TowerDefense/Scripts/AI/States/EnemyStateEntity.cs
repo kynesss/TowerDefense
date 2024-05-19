@@ -1,7 +1,7 @@
 ﻿using System;
 using Zenject;
 
-namespace TowerDefense.AI.Scripts.States
+namespace TowerDefense.Scripts.AI.States
 {
     public abstract class EnemyStateEntity : IInitializable, ITickable, IDisposable
     {

@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using TowerDefense.AI.Scripts;
+using TowerDefense.Scripts.AI;
 using UnityEngine;
 using Zenject;
 
-namespace TowerDefense.Waves.Scripts
+namespace TowerDefense.Scripts.Waves
 {
     public class WaveSpawner : MonoBehaviour
     {

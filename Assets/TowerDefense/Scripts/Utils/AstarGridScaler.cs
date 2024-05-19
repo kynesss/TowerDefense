@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 
-namespace TowerDefense.Utils
+namespace TowerDefense.Scripts.Utils
 {
     public class AstarGridScaler : IInitializable
     {

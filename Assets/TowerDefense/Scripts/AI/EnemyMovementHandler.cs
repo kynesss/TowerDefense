@@ -3,7 +3,7 @@ using Pathfinding;
 using UnityEngine;
 using Zenject;
 
-namespace TowerDefense.AI.Scripts
+namespace TowerDefense.Scripts.AI
 {
     public class EnemyMovementHandler : IInitializable
     {

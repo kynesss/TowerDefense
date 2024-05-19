@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 using Zenject;
 
-namespace TowerDefense.Waves.Scripts
+namespace TowerDefense.Scripts.Waves
 {
     public class WaveManager : IInitializable
     {

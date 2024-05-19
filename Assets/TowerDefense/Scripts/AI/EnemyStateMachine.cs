@@ -1,9 +1,9 @@
 ﻿using EasyButtons;
-using TowerDefense.AI.Scripts.States;
+using TowerDefense.Scripts.AI.States;
 using UnityEngine;
 using Zenject;
 
-namespace TowerDefense.AI.Scripts
+namespace TowerDefense.Scripts.AI
 {
     public class EnemyStateMachine : MonoBehaviour
     {

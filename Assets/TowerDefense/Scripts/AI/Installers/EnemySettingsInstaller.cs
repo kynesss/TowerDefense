@@ -1,9 +1,9 @@
 using System;
-using TowerDefense.AI.Scripts.States;
+using TowerDefense.Scripts.AI.States;
 using UnityEngine;
 using Zenject;
 
-namespace TowerDefense.AI.Scripts.Installers
+namespace TowerDefense.Scripts.AI.Installers
 {
     [CreateAssetMenu(fileName = "EnemySettingsInstaller", menuName = "Installers/EnemySettingsInstaller")]
     public class EnemySettingsInstaller : ScriptableObjectInstaller<EnemySettingsInstaller>

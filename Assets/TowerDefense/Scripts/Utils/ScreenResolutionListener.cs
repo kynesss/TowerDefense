@@ -2,7 +2,7 @@
 using UnityEngine;
 using Screen = UnityEngine.Device.Screen;
 
-namespace TowerDefense.Utils
+namespace TowerDefense.Scripts.Utils
 {
     [ExecuteAlways]
     public class ScreenResolutionListener : MonoBehaviour

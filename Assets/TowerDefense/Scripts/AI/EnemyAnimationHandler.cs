@@ -1,7 +1,7 @@
-﻿using TowerDefense.AI.Scripts.States;
+﻿using TowerDefense.Scripts.AI.States;
 using UnityEngine;
 
-namespace TowerDefense.AI.Scripts
+namespace TowerDefense.Scripts.AI
 {
     public class EnemyAnimationHandler
     {

@@ -1,9 +1,9 @@
-using TowerDefense.AI.Scripts;
-using TowerDefense.Waves.Scripts;
+using TowerDefense.Scripts.AI;
+using TowerDefense.Scripts.Waves;
 using UnityEngine;
 using Zenject;
 
-namespace TowerDefense.Common.Installers
+namespace TowerDefense.Scripts.Common.Installers
 {
     public class GameInstaller : MonoInstaller
     {

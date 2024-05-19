@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace TowerDefense.Waves.Scripts
+namespace TowerDefense.Scripts.Waves
 {
     [Serializable]
     public class Wave

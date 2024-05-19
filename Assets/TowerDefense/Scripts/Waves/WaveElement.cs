@@ -1,8 +1,8 @@
 ﻿using System;
-using TowerDefense.AI.Scripts;
+using TowerDefense.Scripts.AI;
 using UnityEngine;
 
-namespace TowerDefense.Waves.Scripts
+namespace TowerDefense.Scripts.Waves
 {
     [Serializable]
     public class WaveElement

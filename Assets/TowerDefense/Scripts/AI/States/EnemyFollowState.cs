@@ -2,7 +2,7 @@
 using UnityEngine;
 using Zenject;
 
-namespace TowerDefense.AI.Scripts.States
+namespace TowerDefense.Scripts.AI.States
 {
     public class EnemyFollowState : EnemyStateEntity
     {
