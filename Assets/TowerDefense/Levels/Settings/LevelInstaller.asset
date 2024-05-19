@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cff83090335a6f549a35087b4e9b01dd, type: 3}
+  m_Name: LevelInstaller
+  m_EditorClassIdentifier: 
+  <Waves>k__BackingField:
+  - <WaveData>k__BackingField:
+    - <Elements>k__BackingField:
+      - <Prefab>k__BackingField: {fileID: 568534265726402480, guid: b264bd4639275e147a477bc3c7a9128b, type: 3}
+        <Count>k__BackingField: 5
+        <Rate>k__BackingField: 1
+      - <Prefab>k__BackingField: {fileID: 5945079436860729843, guid: d72da158f3275ff43bf33c0a1c975089, type: 3}
+        <Count>k__BackingField: 3
+        <Rate>k__BackingField: 3
+      <TimeToNextWave>k__BackingField: 20
+    - <Elements>k__BackingField:
+      - <Prefab>k__BackingField: {fileID: 568534265726402480, guid: b264bd4639275e147a477bc3c7a9128b, type: 3}
+        <Count>k__BackingField: 7
+        <Rate>k__BackingField: 1
+      <TimeToNextWave>k__BackingField: 20
