@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using TowerDefense.AI.Scripts;
 using UnityEngine;
 using Zenject;
@@ -7,33 +8,50 @@ namespace TowerDefense.Waves.Scripts
 {
     public class WaveSpawner : MonoBehaviour
     {
-        private List<Wave> _waves;
+        private readonly Queue<WaveElement> _waveElements = new();
         private EnemyStateMachine.Factory _enemyFactory;
-
-        private int _id;
-
+        
         [Inject]
-        private void Construct(List<Wave> waves, EnemyStateMachine.Factory enemyFactory)
+        private void Construct(EnemyStateMachine.Factory enemyFactory)
         {
-            _waves = waves;
             _enemyFactory = enemyFactory;
         }
 
-        private void Awake()
+        internal void SetWaveData(WaveData waveData)
         {
-            var wave = _waves[0];
-            var waveData = wave.WaveData[_id];
-            var waveElements = waveData.Elements;
-            
-            foreach (var element in waveElements)
+            foreach (var waveElement in waveData.Elements)
             {
-                Debug.Log($"Spawner: {_id} has {element.Count} {element.Prefab.name} prefab!");
+                FillQueue(waveElement);
+            }
+            
+            StartCoroutine(nameof(SpawnCoroutine));
+        }
+
+        private void FillQueue(WaveElement element)
+        {
+            var count = element.Count;
+
+            for (var i = 0; i < count; i++)
+            {
+                _waveElements.Enqueue(element);
             }
         }
 
-        internal void SetId(int id)
+        private IEnumerator SpawnCoroutine()
         {
-            _id = id;
+            Spawn(_waveElements.Dequeue());
+            
+            while (_waveElements.TryDequeue(out var element))
+            {
+                yield return new WaitForSeconds(element.TimeToSpawn);
+                Spawn(element);
+            }
+        }
+
+        private void Spawn(WaveElement element)
+        {
+            var enemy = _enemyFactory.Create(element.Prefab);
+            enemy.transform.position = transform.position;
         }
     }
 }

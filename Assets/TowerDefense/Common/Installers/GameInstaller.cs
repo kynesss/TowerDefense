@@ -9,7 +9,8 @@ namespace TowerDefense.Common.Installers
     {
         public override void InstallBindings()
         {
-            Container.Bind<WaveManager>().AsSingle();
+            //nie mam pojęcia dlaczego Bind nie zadziałało
+            Container.BindInterfacesAndSelfTo<WaveManager>().AsSingle();
             
             Container.BindFactory<Object, EnemyStateMachine, EnemyStateMachine.Factory>()
                 .FromFactory<PrefabFactory<EnemyStateMachine>>();

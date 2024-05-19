@@ -17,13 +17,13 @@ MonoBehaviour:
     - <Elements>k__BackingField:
       - <Prefab>k__BackingField: {fileID: 568534265726402480, guid: b264bd4639275e147a477bc3c7a9128b, type: 3}
         <Count>k__BackingField: 5
-        <Rate>k__BackingField: 1
+        <TimeToSpawn>k__BackingField: 8
       - <Prefab>k__BackingField: {fileID: 5945079436860729843, guid: d72da158f3275ff43bf33c0a1c975089, type: 3}
         <Count>k__BackingField: 3
-        <Rate>k__BackingField: 3
+        <TimeToSpawn>k__BackingField: 10
       <TimeToNextWave>k__BackingField: 20
     - <Elements>k__BackingField:
       - <Prefab>k__BackingField: {fileID: 568534265726402480, guid: b264bd4639275e147a477bc3c7a9128b, type: 3}
         <Count>k__BackingField: 7
-        <Rate>k__BackingField: 1
+        <TimeToSpawn>k__BackingField: 8
       <TimeToNextWave>k__BackingField: 20

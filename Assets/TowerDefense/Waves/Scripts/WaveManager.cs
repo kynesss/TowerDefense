@@ -1,26 +1,43 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
+using Zenject;
 
 namespace TowerDefense.Waves.Scripts
 {
-    public class WaveManager
+    public class WaveManager : IInitializable
     {
+        private readonly List<Wave> _waves;
         private readonly WaveSpawner[] _spawners;
 
-        public WaveManager(WaveSpawner[] spawners)
+        private int _currentWaveId;
+        private Wave CurrentWave => _waves[_currentWaveId];
+        
+        public WaveManager(List<Wave> waves, WaveSpawner[] spawners)
         {
             _spawners = spawners;
-            InitializeSpawners();
+            _waves = waves;
+            
+            Debug.Log($"Bind wave manager");
+            
+            UpdateSpawners();
         }
 
-        private void InitializeSpawners()
+        private void UpdateSpawners()
         {
             for (var id = 0; id < _spawners.Length; id++)
             {
                 var spawner = _spawners[id];
-                spawner.SetId(id);
+                var waveData = CurrentWave.WaveData[id];
+                
+                spawner.SetWaveData(waveData);
+                
+                Debug.Log($"Id: {id}");
             }
-
-            Debug.Log($"WaveManager has {_spawners.Length} spawners!");
+        }
+        
+        public void Initialize()
+        {
+            Debug.Log($"Elo");
         }
     }
 }

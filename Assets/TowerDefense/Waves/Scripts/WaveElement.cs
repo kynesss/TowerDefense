@@ -9,6 +9,6 @@ namespace TowerDefense.Waves.Scripts
     {
         [field: SerializeField] public EnemyStateMachine Prefab { get; private set; }
         [field: SerializeField] public int Count { get; private set; }
-        [field: SerializeField] public float Rate { get; private set; }
+        [field: SerializeField] public float TimeToSpawn { get; private set; }
     }
 }
