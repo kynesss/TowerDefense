@@ -29,6 +29,11 @@ namespace TowerDefense.Scripts.AI
             CurrentHealth = Mathf.Max(CurrentHealth - damage, 0f);
         }
 
+        public void Kill()
+        {
+            TakeDamage(_settings.MaxHealth);
+        }
+
         [Serializable]
         public class Settings
         {
