@@ -26,10 +26,7 @@ namespace TowerDefense.Scripts.Towers
 
         private void OnTowerClicked(TowerClickedSignal signal)
         {
-            if (signal.Field != this)
-                return;
             
-            Debug.Log($"Tower: {gameObject.name}");
         }
     }
 }

@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 using TowerDefense.Scripts.Common.Signals;
 using TowerDefense.Scripts.Towers;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Zenject;
 
 namespace TowerDefense.Scripts.Common
@@ -30,16 +32,14 @@ namespace TowerDefense.Scripts.Common
             var ray = Camera.main!.ScreenPointToRay(Input.mousePosition);
             var hit = Physics2D.Raycast(ray.origin,  ray.direction, Mathf.Infinity, _settings.TowerLayer);
 
-            if (hit.collider == null) 
-                return;
+            TowerField towerField = null;
             
-            var towerField = hit.collider.GetComponent<TowerField>();
-            if (towerField)
-            {
-                _signalBus.Fire(new TowerClickedSignal(towerField));
-            }
+            if (hit.collider != null) 
+                towerField = hit.collider.GetComponent<TowerField>();
+            
+            _signalBus.Fire(new TowerClickedSignal(towerField));
         }
-
+        
         [Serializable]
         public class Settings
         {
