@@ -1,9 +1,7 @@
 using System;
-using System.Collections.Generic;
 using TowerDefense.Scripts.Common.Signals;
 using TowerDefense.Scripts.Towers;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using Zenject;
 
 namespace TowerDefense.Scripts.Common

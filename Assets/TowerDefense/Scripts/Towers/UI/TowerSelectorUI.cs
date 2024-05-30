@@ -1,56 +1,84 @@
-using TowerDefense.Scripts.Common.Signals;
+﻿using System;
+using JetBrains.Annotations;
+using NaughtyAttributes;
 using UnityEngine;
-using Zenject;
+using UnityEngine.UI;
 
 namespace TowerDefense.Scripts.Towers.UI
 {
     public class TowerSelectorUI : MonoBehaviour
     {
-        [SerializeField] private TowerSelectorEntryUI selectorEntry;
+        [BoxGroup("Towers")][SerializeField] private Tower[] towers;
         
-        private SignalBus _signalBus;
-        private TowerField _selectedTower;
+        [BoxGroup("Options")][SerializeField] private TowerSelectorOptionUI[] basicOptions;
+        [BoxGroup("Options")][SerializeField] private TowerSelectorOptionUI[] advancedOptions;
 
-        [Inject]
-        private void Construct(SignalBus signalBus)
-        {
-            _signalBus = signalBus;
-        }
+        private TowerField _towerField;
+        private Image _image;
+        private RectTransform RectTransform => transform as RectTransform;
         
-        private void OnEnable()
+        private void Awake()
         {
-            _signalBus.Subscribe<TowerClickedSignal>(OnTowerClicked);
+            _image = GetComponent<Image>();
         }
 
-        private void OnDisable()
+        private void Start()
         {
-            _signalBus.Unsubscribe<TowerClickedSignal>(OnTowerClicked);
+            Hide();
         }
 
-        private void OnTowerClicked(TowerClickedSignal signal)
+        public void Show(TowerField towerField)
         {
-            var towerField = signal.Field;
+            _towerField = towerField;
             
-            if (towerField == null)
+            if (towerField.IsEmpty)
             {
-                DeselectField();
+                SetupBasicOptions();
             }
-            else if (towerField != _selectedTower)
+            else
             {
-                SelectField(towerField);
+                SetupAdvancedOptions();
+            }
+            
+            SetPositionOnTowerCenter(towerField);
+            _image.enabled = true;
+        }
+
+        private void SetupBasicOptions()
+        {
+            for (var i = 0; i < basicOptions.Length; i++)
+            {
+                var option = basicOptions[i];
+                var tower = towers[i];
+                
+                option.Setup(tower.Icon, () => _towerField.BuildTower(tower));
             }
         }
 
-        private void SelectField(TowerField towerField)
+        private void SetupAdvancedOptions()
         {
-            selectorEntry.Show(towerField);
-            _selectedTower = towerField;
+            
         }
 
-        private void DeselectField()
+        public void Hide()
         {
-            selectorEntry.Hide();
-            _selectedTower = null;
+            _image.enabled = false;
+            _towerField = null;
+        }
+
+        private void SetPositionOnTowerCenter([NotNull] TowerField towerField)
+        {
+            if (towerField == null) 
+                throw new ArgumentNullException(nameof(towerField));
+            
+            var towerWorldPos = towerField.transform.position;
+            var towerScreenPos = Camera.main!.WorldToScreenPoint(towerWorldPos);
+            var parentRect = transform.parent as RectTransform;
+            
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(parentRect, towerScreenPos, null,
+                out var localPoint);
+
+            RectTransform.anchoredPosition = localPoint;
         }
     }
 }
