@@ -51,12 +51,6 @@ namespace TowerDefense.Scripts.Towers
 
         public void BuildTower(Tower tower)
         {
-            if (tower == null)
-            {
-                Debug.LogError($"Tower is null");
-                return;
-            }
-
             _spriteRenderer.sprite = tower.TowerSprite;
             //_animator.runtimeAnimatorController = tower.AnimatorController;
             
@@ -65,13 +59,15 @@ namespace TowerDefense.Scripts.Towers
 
         public void UpgradeTower()
         {
+            Debug.Log($"Upgrade");
+            
             var towerUpgrade = CurrentTower.Upgrade;
             BuildTower(towerUpgrade);
         }
 
-        public void DemolishTower()
+        public void SellTower()
         {
-            
+            Debug.Log($"Sell");
         }
     }
 }
