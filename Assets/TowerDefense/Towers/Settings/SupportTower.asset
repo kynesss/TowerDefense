@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SupportTower
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Support
-  <TowerSprite>k__BackingField: {fileID: 0}
-  <Icon>k__BackingField: {fileID: 0}
+  <TowerSprite>k__BackingField: {fileID: 21300000, guid: f73d2ec0186144848ab89c0c21ed4de6, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: fb028c6107540d043b693c26f2e02d31, type: 3}
   <AnimatorController>k__BackingField: {fileID: 0}
   <Upgrade>k__BackingField: {fileID: 0}
