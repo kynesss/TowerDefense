@@ -47,7 +47,7 @@ namespace TowerDefense.Scripts.Towers.UI
 
         private void SelectField(TowerField towerField)
         {
-            _selector.Show(towerField);
+            _selector.Setup(towerField);
             _selectedTower = towerField;
         }
 

@@ -52,9 +52,12 @@ namespace TowerDefense.Scripts.Towers
         public void BuildTower(Tower tower)
         {
             if (tower == null)
-                throw new NullReferenceException();
+            {
+                Debug.LogError($"Tower is null");
+                return;
+            }
 
-            //_spriteRenderer.sprite = tower.TowerSprite;
+            _spriteRenderer.sprite = tower.TowerSprite;
             //_animator.runtimeAnimatorController = tower.AnimatorController;
             
             CurrentTower = tower;

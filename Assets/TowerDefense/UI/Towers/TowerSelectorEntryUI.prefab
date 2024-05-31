@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5074350444152661104}
   - component: {fileID: 473179578262970892}
   - component: {fileID: 6778991699938790814}
+  - component: {fileID: 5030506597841004985}
   m_Layer: 5
   m_Name: TowerSelectorEntryUI
   m_TagString: Untagged
@@ -103,6 +104,19 @@ MonoBehaviour:
   - {fileID: 7997740444849746093}
   - {fileID: 337728080629288090}
   advancedOptions: []
+  canvasGroup: {fileID: 5030506597841004985}
+--- !u!225 &5030506597841004985
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7521322358976996955}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &221799815100891782
 PrefabInstance:
   m_ObjectHideFlags: 0
