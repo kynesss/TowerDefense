@@ -46,12 +46,17 @@ namespace TowerDefense.Scripts.Towers.UI
                 var option = basicOptions[i];
                 var tower = towers[i];
 
-                option.Setup(tower.Icon, () => _towerField.BuildTower(tower));
+                option.Setup(tower.Icon, () =>
+                {
+                    _towerField.BuildTower(tower);
+                    Hide();
+                });
             }
         }
 
         private void SetupAdvancedOptions()
         {
+            Debug.Log($"Setup advanced options");
         }
 
         private void SetPositionOnTowerCenter([NotNull] TowerField towerField)
