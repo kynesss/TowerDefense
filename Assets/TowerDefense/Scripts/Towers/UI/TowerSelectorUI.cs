@@ -15,9 +15,6 @@ namespace TowerDefense.Scripts.Towers.UI
 
         [SerializeField] private GameObject basicOptionsContainer;
         [SerializeField] private GameObject advancedOptionsContainer;
-
-        [SerializeField] private Sprite upgradeSprite;
-        [SerializeField] private Sprite sellSprite;
         
         [SerializeField] private CanvasGroup canvasGroup;
 
@@ -54,31 +51,34 @@ namespace TowerDefense.Scripts.Towers.UI
 
         private void SetupBasicOptions()
         {
-            _image.enabled = true;
-            basicOptionsContainer.SetActive(true);
-            advancedOptionsContainer.SetActive(false);
-            
+            ShowBasicOptions(true);
+
             for (var i = 0; i < basicOptions.Length; i++)
             {
                 var option = basicOptions[i];
                 var tower = towers[i];
 
-                option.Setup(tower.Icon, () =>
+                option.Setup(() =>
                 {
                     _towerField.BuildTower(tower);
                     Hide();
-                });
+                }, tower.Icon);
             }
         }
 
         private void SetupAdvancedOptions()
         {
-            _image.enabled = false;
-            basicOptionsContainer.SetActive(false);
-            advancedOptionsContainer.SetActive(true);
+            ShowBasicOptions(false);
 
-            upgradeOption.Setup(upgradeSprite, () => _towerField.UpgradeTower());
-            sellOption.Setup(sellSprite, () => _towerField.SellTower());
+            upgradeOption.Setup(() => _towerField.UpgradeTower());
+            sellOption.Setup(() => _towerField.SellTower());
+        }
+
+        private void ShowBasicOptions(bool basic)
+        {
+            _image.enabled = basic;
+            basicOptionsContainer.SetActive(basic);
+            advancedOptionsContainer.SetActive(!basic);
         }
 
         private void SetPositionOnTowerCenter([NotNull] TowerField towerField)

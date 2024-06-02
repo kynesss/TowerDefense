@@ -26,10 +26,12 @@ namespace TowerDefense.Scripts.Towers.UI
             _onClick?.Invoke();
         }
 
-        public void Setup(Sprite sprite, Action onClick)
+        public void Setup(Action onClick, Sprite sprite = null)
         {
-            icon.sprite = sprite;
             _onClick = onClick;
+            
+            if (sprite != null)
+                icon.sprite = sprite;
         }
     }
 }

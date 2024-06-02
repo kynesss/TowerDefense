@@ -146,6 +146,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: AdvancedTowerOptionUI (Upgrade)
       objectReference: {fileID: 0}
+    - target: {fileID: 2742652678355743815, guid: f246e698d0c77e34097aa819f9df64b9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 6.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4251600714743848949, guid: f246e698d0c77e34097aa819f9df64b9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1f95aff7bd64cc94d846d4e74892962f, type: 3}
     - target: {fileID: 5143913122437210090, guid: f246e698d0c77e34097aa819f9df64b9, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
