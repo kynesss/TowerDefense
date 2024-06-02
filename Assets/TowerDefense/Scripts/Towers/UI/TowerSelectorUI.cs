@@ -7,7 +7,7 @@ namespace TowerDefense.Scripts.Towers.UI
 {
     public class TowerSelectorUI : MonoBehaviour
     {
-        [SerializeField] private Tower[] towers;
+        [SerializeField] private TowerData[] towers;
 
         [SerializeField] private TowerSelectorOptionUI[] basicOptions;
         [SerializeField] private TowerSelectorOptionUI upgradeOption;

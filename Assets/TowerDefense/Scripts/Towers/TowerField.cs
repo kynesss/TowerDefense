@@ -1,4 +1,3 @@
-using System;
 using TowerDefense.Scripts.Common.Signals;
 using UnityEngine;
 using Zenject;
@@ -8,22 +7,14 @@ namespace TowerDefense.Scripts.Towers
     public class TowerField : MonoBehaviour
     {
         private SignalBus _signalBus;
-        private SpriteRenderer _spriteRenderer;
-        private Animator _animator;
-        
-        public Tower CurrentTower { get; private set; }
-        public bool IsEmpty => CurrentTower == null;
+       
+        public TowerData CurrentTowerData { get; private set; }
+        public bool IsEmpty => CurrentTowerData == null;
 
         [Inject]
         private void Construct(SignalBus signalBus)
         {
             _signalBus = signalBus;
-        }
-
-        private void Awake()
-        {
-            _spriteRenderer = GetComponent<SpriteRenderer>();
-            _animator = GetComponent<Animator>();
         }
 
         private void OnEnable()
@@ -43,25 +34,22 @@ namespace TowerDefense.Scripts.Towers
 
         private void Update()
         {
-            if (CurrentTower == null)
+            if (CurrentTowerData == null)
                 return;
             
-            CurrentTower.Update();
+            CurrentTowerData.Update();
         }
 
-        public void BuildTower(Tower tower)
+        public void BuildTower(TowerData towerData)
         {
-            _spriteRenderer.sprite = tower.TowerSprite;
-            _animator.runtimeAnimatorController = tower.AnimatorController;
-            
-            CurrentTower = tower;
+            CurrentTowerData = towerData;
         }
 
         public void UpgradeTower()
         {
             Debug.Log($"Upgrade");
             
-            var towerUpgrade = CurrentTower.Upgrade;
+            var towerUpgrade = CurrentTowerData.Upgrade;
             BuildTower(towerUpgrade);
         }
 
