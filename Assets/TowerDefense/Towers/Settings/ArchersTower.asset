@@ -15,5 +15,5 @@ MonoBehaviour:
   <Name>k__BackingField: Archers
   <TowerSprite>k__BackingField: {fileID: 21300000, guid: ca3febae567b118448443c2852c7b952, type: 3}
   <Icon>k__BackingField: {fileID: 21300000, guid: 29495d055d1629a46bcdf29f881feaee, type: 3}
-  <AnimatorController>k__BackingField: {fileID: 0}
+  <AnimatorController>k__BackingField: {fileID: 22100000, guid: 03ec9e1f5bab8a242b5ea018981188bd, type: 2}
   <Upgrade>k__BackingField: {fileID: 0}

@@ -52,7 +52,7 @@ namespace TowerDefense.Scripts.Towers
         public void BuildTower(Tower tower)
         {
             _spriteRenderer.sprite = tower.TowerSprite;
-            //_animator.runtimeAnimatorController = tower.AnimatorController;
+            _animator.runtimeAnimatorController = tower.AnimatorController;
             
             CurrentTower = tower;
         }

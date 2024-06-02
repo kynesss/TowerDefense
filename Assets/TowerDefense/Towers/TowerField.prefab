@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 294446360240272851}
   - component: {fileID: 6342315250398166179}
   - component: {fileID: 3823535028089679366}
+  - component: {fileID: 4574579097587197745}
   - component: {fileID: 7206770367528082480}
   m_Layer: 7
   m_Name: TowerField
@@ -131,6 +132,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &4574579097587197745
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4666117602346281711}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &7206770367528082480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,4 +165,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1c8c206486b3284e9d1f2a1c416a2b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 3823535028089679366}
