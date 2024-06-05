@@ -9,6 +9,13 @@
       },
       "hash": "249ee5df80ab87e4a8e0a4f7c5ae7f44ec803c97"
     },
+    "com.cysharp.unitask": {
+      "version": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "fbe0bf85155f42f8832205f7b3ac3df571ada33e"
+    },
     "com.madsbangh.easybuttons": {
       "version": "https://github.com/madsbangh/EasyButtons.git#upm",
       "depth": 0,

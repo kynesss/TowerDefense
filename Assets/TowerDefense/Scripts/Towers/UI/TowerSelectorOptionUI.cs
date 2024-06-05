@@ -14,7 +14,7 @@ namespace TowerDefense.Scripts.Towers.UI
         private void OnEnable()
         {
             button.interactable = true;
-            button.onClick.AddListener(Button_OnClick);s
+            button.onClick.AddListener(Button_OnClick);
         }
 
         private void OnDisable()

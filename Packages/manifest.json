@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "com.bulleador.naughtyattributes": "https://github.com/bulleador/NaughtyAttributes.git#upm",
+    "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
     "com.madsbangh.easybuttons": "https://github.com/madsbangh/EasyButtons.git#upm",
     "com.marijnzwemmer.unity-toolbar-extender": "https://github.com/marijnz/unity-toolbar-extender.git",
     "com.unity.collab-proxy": "2.3.1",
