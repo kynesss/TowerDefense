@@ -5,8 +5,9 @@ namespace TowerDefense.Scripts.Towers
 {
     public class TowerFacade : MonoBehaviour
     {
-        public void SetPosition(Vector3 position)
+        public void SetParentAndPosition(Transform parent, Vector3 position)
         {
+            transform.SetParent(parent);
             transform.position = position;
         }
         

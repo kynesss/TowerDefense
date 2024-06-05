@@ -9,12 +9,17 @@ namespace TowerDefense.Scripts.Waves
     public class WaveSpawner : MonoBehaviour
     {
         private readonly Queue<WaveElement> _waveElements = new();
+        
         private EnemyStateMachine.Factory _enemyFactory;
+        private Transform _enemyParent;
         
         [Inject]
-        private void Construct(EnemyStateMachine.Factory enemyFactory)
+        private void Construct(
+            EnemyStateMachine.Factory enemyFactory,
+            [Inject(Id = "EnemyParent")] Transform enemyParent)
         {
             _enemyFactory = enemyFactory;
+            _enemyParent = enemyParent;
         }
 
         internal void SetWaveData(WaveData waveData)
@@ -51,7 +56,7 @@ namespace TowerDefense.Scripts.Waves
         private void Spawn(WaveElement element)
         {
             var enemy = _enemyFactory.Create(element.Prefab);
-            enemy.transform.position = transform.position;
+            enemy.SetParentAndPosition(_enemyParent, transform.position);
         }
     }
 }

@@ -9,13 +9,16 @@ namespace TowerDefense.Scripts.Common.Installers
 {
     public class GameInstaller : MonoInstaller
     {
+        [SerializeField] private Transform enemyParentGroup;
+        [SerializeField] private Transform towerParentGroup;
+        
         public override void InstallBindings()
         {
             SignalBusInstaller.Install(Container);
-            
-            BindTowers();
+
             BindWaves();
             BindEnemies();
+            BindTowers();
         }
 
         private void BindWaves()
@@ -27,6 +30,8 @@ namespace TowerDefense.Scripts.Common.Installers
         {
             Container.BindFactory<Object, EnemyStateMachine, EnemyStateMachine.Factory>()
                 .FromFactory<PrefabFactory<EnemyStateMachine>>();
+
+            Container.Bind<Transform>().WithId("EnemyParent").FromInstance(enemyParentGroup);
         }
 
         private void BindTowers()
@@ -36,8 +41,11 @@ namespace TowerDefense.Scripts.Common.Installers
             Container.DeclareSignal<TowerSoldSignal>();
             
             Container.BindInterfacesAndSelfTo<TowerClickListener>().AsSingle();
+            
             Container.BindFactory<Object, TowerFacade, TowerFacade.Factory>()
                 .FromFactory<PrefabFactory<TowerFacade>>();
+
+            Container.Bind<Transform>().WithId("TowerParent").FromInstance(towerParentGroup);
         }
     }
 }
