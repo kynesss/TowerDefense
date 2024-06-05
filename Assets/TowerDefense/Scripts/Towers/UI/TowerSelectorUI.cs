@@ -51,8 +51,6 @@ namespace TowerDefense.Scripts.Towers.UI
 
         private void SetupBasicOptions()
         {
-            ShowBasicOptions(true);
-
             for (var i = 0; i < basicOptions.Length; i++)
             {
                 var option = basicOptions[i];
@@ -64,23 +62,17 @@ namespace TowerDefense.Scripts.Towers.UI
                     Hide();
                 }, tower.Icon);
             }
+
+            ShowBasicOptions(true);
         }
 
         private void SetupAdvancedOptions()
         {
             ShowBasicOptions(false);
 
-            var isUpgradeAvailable = _towerField.CurrentTowerData.CanUpgrade; 
-            
-            if (isUpgradeAvailable)
-            {
-                upgradeOption.gameObject.SetActive(true);
-                upgradeOption.Setup(() => _towerField.UpgradeTower());
-            }
-            else
-            {
-                upgradeOption.gameObject.SetActive(false);
-            }
+            var isUpgradeAvailable = _towerField.CurrentTowerData.CanUpgrade;
+            upgradeOption.gameObject.SetActive(isUpgradeAvailable);
+            upgradeOption.Setup(() => _towerField.UpgradeTower());
             
             sellOption.Setup(() => _towerField.SellTower());
         }

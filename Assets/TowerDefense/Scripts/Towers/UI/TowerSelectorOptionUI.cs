@@ -7,17 +7,19 @@ namespace TowerDefense.Scripts.Towers.UI
     public class TowerSelectorOptionUI : MonoBehaviour
     {
         [SerializeField] private Image icon;
-        [SerializeField] private Button button
-            ;
+        [SerializeField] private Button button;
+        
         private Action _onClick;
 
         private void OnEnable()
         {
-            button.onClick.AddListener(Button_OnClick);
+            button.interactable = true;
+            button.onClick.AddListener(Button_OnClick);s
         }
 
         private void OnDisable()
         {
+            button.interactable = false;
             button.onClick.RemoveListener(Button_OnClick);
         }
 
