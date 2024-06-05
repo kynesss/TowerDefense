@@ -1,5 +1,6 @@
 using TowerDefense.Scripts.AI;
 using TowerDefense.Scripts.Common.Signals;
+using TowerDefense.Scripts.Towers;
 using TowerDefense.Scripts.Waves;
 using UnityEngine;
 using Zenject;
@@ -11,13 +12,29 @@ namespace TowerDefense.Scripts.Common.Installers
         public override void InstallBindings()
         {
             SignalBusInstaller.Install(Container);
-            Container.DeclareSignal<TowerClickedSignal>();
             
+            BindTowers();
+            BindWaves();
+            BindEnemies();
+        }
+
+        private void BindWaves()
+        {
             Container.BindInterfacesAndSelfTo<WaveManager>().AsSingle();
-            Container.BindInterfacesAndSelfTo<TowerClickListener>().AsSingle();
-            
+        }
+
+        private void BindEnemies()
+        {
             Container.BindFactory<Object, EnemyStateMachine, EnemyStateMachine.Factory>()
                 .FromFactory<PrefabFactory<EnemyStateMachine>>();
+        }
+
+        private void BindTowers()
+        {
+            Container.DeclareSignal<TowerClickedSignal>();
+            Container.BindInterfacesAndSelfTo<TowerClickListener>().AsSingle();
+            Container.BindFactory<Object, TowerFacade, TowerFacade.Factory>()
+                .FromFactory<PrefabFactory<TowerFacade>>();
         }
     }
 }

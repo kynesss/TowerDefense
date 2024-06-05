@@ -95,6 +95,8 @@ GameObject:
   - component: {fileID: 7862621895633878337}
   - component: {fileID: 1398621546531864182}
   - component: {fileID: 7532021342047549669}
+  - component: {fileID: 8882770405095987507}
+  - component: {fileID: 3949728409392631671}
   m_Layer: 0
   m_Name: YellowMagicTower (1)
   m_TagString: Untagged
@@ -191,3 +193,33 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8882770405095987507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6778263951437864077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0166d8ff8d905b048b2448179e1f5d11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _components:
+  - {fileID: 3949728409392631671}
+  _identifier: 
+  _useSceneContext: 0
+  _context: {fileID: 0}
+  _bindType: 0
+--- !u!114 &3949728409392631671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6778263951437864077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1e77ec302b432b985494843f5e1af7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

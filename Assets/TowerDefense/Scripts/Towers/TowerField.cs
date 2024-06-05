@@ -1,4 +1,3 @@
-using TowerDefense.Scripts.Common.Signals;
 using UnityEngine;
 using Zenject;
 
@@ -6,56 +5,38 @@ namespace TowerDefense.Scripts.Towers
 {
     public class TowerField : MonoBehaviour
     {
-        private SignalBus _signalBus;
-       
+        private TowerFacade.Factory _towerFactory;
         public TowerData CurrentTowerData { get; private set; }
+        public TowerFacade CurrentTower { get; private set; }
         public bool IsEmpty => CurrentTowerData == null;
 
         [Inject]
-        private void Construct(SignalBus signalBus)
+        private void Construct(TowerFacade.Factory towerFactory)
         {
-            _signalBus = signalBus;
-        }
-
-        private void OnEnable()
-        {
-            _signalBus.Subscribe<TowerClickedSignal>(OnTowerClicked);
-        }
-
-        private void OnDisable()
-        {
-            _signalBus.Unsubscribe<TowerClickedSignal>(OnTowerClicked);
-        }
-
-        private void OnTowerClicked(TowerClickedSignal signal)
-        {
-            
-        }
-
-        private void Update()
-        {
-            if (CurrentTowerData == null)
-                return;
-            
-            CurrentTowerData.Update();
+            _towerFactory = towerFactory;
         }
 
         public void BuildTower(TowerData towerData)
         {
             CurrentTowerData = towerData;
+            CurrentTower = _towerFactory.Create(towerData.Prefab);
+            CurrentTower.SetPosition(transform.position);
         }
 
         public void UpgradeTower()
         {
-            Debug.Log($"Upgrade");
-            
-            var towerUpgrade = CurrentTowerData.Upgrade;
-            BuildTower(towerUpgrade);
+            DestroyCurrentTower();
+            BuildTower(CurrentTowerData.Upgrade);
         }
 
         public void SellTower()
         {
-            Debug.Log($"Sell");
+            DestroyCurrentTower();
+        }
+
+        private void DestroyCurrentTower()
+        {
+            Destroy(CurrentTower.gameObject);
         }
     }
 }
