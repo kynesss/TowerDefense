@@ -70,7 +70,18 @@ namespace TowerDefense.Scripts.Towers.UI
         {
             ShowBasicOptions(false);
 
-            upgradeOption.Setup(() => _towerField.UpgradeTower());
+            var isUpgradeAvailable = _towerField.CurrentTowerData.CanUpgrade; 
+            
+            if (isUpgradeAvailable)
+            {
+                upgradeOption.gameObject.SetActive(true);
+                upgradeOption.Setup(() => _towerField.UpgradeTower());
+            }
+            else
+            {
+                upgradeOption.gameObject.SetActive(false);
+            }
+            
             sellOption.Setup(() => _towerField.SellTower());
         }
 

@@ -10,5 +10,7 @@ namespace TowerDefense.Scripts.Towers
         [field: SerializeField] public Sprite Icon { get; private set; }
         [field: SerializeField] public TowerFacade Prefab { get; private set; }
         [field: SerializeField] public TowerData Upgrade { get; private set; }
+
+        public bool CanUpgrade => Upgrade != null;
     }
 }
