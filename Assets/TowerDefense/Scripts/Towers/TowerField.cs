@@ -1,4 +1,3 @@
-using System;
 using TowerDefense.Scripts.Common.Signals;
 using UnityEngine;
 using Zenject;
