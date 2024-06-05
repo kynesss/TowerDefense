@@ -32,6 +32,9 @@ namespace TowerDefense.Scripts.Common.Installers
         private void BindTowers()
         {
             Container.DeclareSignal<TowerClickedSignal>();
+            Container.DeclareSignal<TowerBuiltSignal>();
+            Container.DeclareSignal<TowerSoldSignal>();
+            
             Container.BindInterfacesAndSelfTo<TowerClickListener>().AsSingle();
             Container.BindFactory<Object, TowerFacade, TowerFacade.Factory>()
                 .FromFactory<PrefabFactory<TowerFacade>>();

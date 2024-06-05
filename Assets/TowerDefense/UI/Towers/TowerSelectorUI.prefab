@@ -88,7 +88,6 @@ GameObject:
   - component: {fileID: 5074350444152661104}
   - component: {fileID: 473179578262970892}
   - component: {fileID: 6778991699938790814}
-  - component: {fileID: 5030506597841004985}
   m_Layer: 5
   m_Name: TowerSelectorUI
   m_TagString: Untagged
@@ -132,7 +131,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7521322358976996955}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -181,21 +180,7 @@ MonoBehaviour:
   sellOption: {fileID: 2956885618985819421}
   basicOptionsContainer: {fileID: 6153359894746090413}
   advancedOptionsContainer: {fileID: 3383129121522784064}
-  upgradeSprite: {fileID: 0}
-  sellSprite: {fileID: 0}
-  canvasGroup: {fileID: 5030506597841004985}
---- !u!225 &5030506597841004985
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7521322358976996955}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
+  image: {fileID: 473179578262970892}
 --- !u!1001 &101012122886740004
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ArchersTower (2)
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Archers
-  <TowerSprite>k__BackingField: {fileID: 21300000, guid: ca3febae567b118448443c2852c7b952, type: 3}
+  <TowerSprite>k__BackingField: {fileID: 21300000, guid: bbde07939fdc79e4ea4925d8f8e0db0d, type: 3}
   <Icon>k__BackingField: {fileID: 21300000, guid: 29495d055d1629a46bcdf29f881feaee, type: 3}
-  <Prefab>k__BackingField: {fileID: -8817611765968774352, guid: cbad9d277b10e46489b5ba936f25da89, type: 3}
-  <Upgrade>k__BackingField: {fileID: 0}
+  <Prefab>k__BackingField: {fileID: 2236146433818225379, guid: dfddf1233f360e04d80602eb4c12b6bc, type: 3}
+  <Upgrade>k__BackingField: {fileID: 11400000, guid: dbad56b510f3f6f40a83732e6052652f, type: 2}

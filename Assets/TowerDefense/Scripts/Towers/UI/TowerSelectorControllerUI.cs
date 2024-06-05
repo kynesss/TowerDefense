@@ -6,7 +6,8 @@ namespace TowerDefense.Scripts.Towers.UI
 {
     public class TowerSelectorControllerUI : MonoBehaviour
     {
-        private TowerSelectorUI _selector;
+        [SerializeField] private TowerSelectorUI selector;
+        
         private TowerField _selectedTower;
         private SignalBus _signalBus;
 
@@ -16,19 +17,23 @@ namespace TowerDefense.Scripts.Towers.UI
             _signalBus = signalBus;
         }
 
-        private void Awake()
+        private void Start()
         {
-            _selector = GetComponentInChildren<TowerSelectorUI>();
+            selector.Hide();
         }
 
         private void OnEnable()
         {
             _signalBus.Subscribe<TowerClickedSignal>(OnTowerClicked);
+            _signalBus.Subscribe<TowerBuiltSignal>(OnTowerBuilt);
+            _signalBus.Subscribe<TowerSoldSignal>(OnTowerSold);
         }
 
         private void OnDisable()
         {
             _signalBus.Unsubscribe<TowerClickedSignal>(OnTowerClicked);
+            _signalBus.Unsubscribe<TowerBuiltSignal>(OnTowerBuilt);
+            _signalBus.Unsubscribe<TowerSoldSignal>(OnTowerSold);
         }
 
         private void OnTowerClicked(TowerClickedSignal signal)
@@ -45,15 +50,25 @@ namespace TowerDefense.Scripts.Towers.UI
             }
         }
 
+        private void OnTowerBuilt()
+        {
+            DeselectField();
+        }
+
+        private void OnTowerSold()
+        {
+            DeselectField();
+        }
+
         private void SelectField(TowerField towerField)
         {
-            _selector.Setup(towerField);
+            selector.Show(towerField);
             _selectedTower = towerField;
         }
 
         private void DeselectField()
         {
-            _selector.Hide();
+            selector.Hide();
             _selectedTower = null;
         }
     }

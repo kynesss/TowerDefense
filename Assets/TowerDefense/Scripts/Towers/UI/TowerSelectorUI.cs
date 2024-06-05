@@ -15,25 +15,15 @@ namespace TowerDefense.Scripts.Towers.UI
 
         [SerializeField] private GameObject basicOptionsContainer;
         [SerializeField] private GameObject advancedOptionsContainer;
+
+        [SerializeField] private Image image;
         
-        [SerializeField] private CanvasGroup canvasGroup;
-
         private TowerField _towerField;
-        private Image _image;
         private RectTransform RectTransform => transform as RectTransform;
-
-        private void Awake()
+        
+        public void Show(TowerField towerField)
         {
-            _image = GetComponent<Image>();
-        }
-
-        private void Start()
-        {
-            Hide();
-        }
-
-        public void Setup(TowerField towerField)
-        {
+            gameObject.SetActive(true);
             _towerField = towerField;
 
             if (towerField.IsEmpty)
@@ -46,24 +36,29 @@ namespace TowerDefense.Scripts.Towers.UI
             }
 
             SetPositionOnTowerCenter(towerField);
-            Show();
+        }
+
+        public void Hide()
+        {
+            _towerField = null;
+            gameObject.SetActive(false);
         }
 
         private void SetupBasicOptions()
         {
+            ShowBasicOptions(true);
+            
             for (var i = 0; i < basicOptions.Length; i++)
             {
                 var option = basicOptions[i];
                 var tower = towers[i];
-
+                
                 option.Setup(() =>
                 {
                     _towerField.BuildTower(tower);
                     Hide();
                 }, tower.Icon);
             }
-
-            ShowBasicOptions(true);
         }
 
         private void SetupAdvancedOptions()
@@ -72,14 +67,22 @@ namespace TowerDefense.Scripts.Towers.UI
 
             var isUpgradeAvailable = _towerField.CurrentTowerData.CanUpgrade;
             upgradeOption.gameObject.SetActive(isUpgradeAvailable);
-            upgradeOption.Setup(() => _towerField.UpgradeTower());
+            upgradeOption.Setup(() =>
+            {
+                _towerField.UpgradeTower();
+                Hide();
+            });
             
-            sellOption.Setup(() => _towerField.SellTower());
+            sellOption.Setup(() =>
+            {
+                _towerField.SellTower();
+                Hide();
+            });
         }
 
         private void ShowBasicOptions(bool basic)
         {
-            _image.enabled = basic;
+            image.enabled = basic;
             basicOptionsContainer.SetActive(basic);
             advancedOptionsContainer.SetActive(!basic);
         }
@@ -97,18 +100,6 @@ namespace TowerDefense.Scripts.Towers.UI
                 out var localPoint);
 
             RectTransform.anchoredPosition = localPoint;
-        }
-
-        [EasyButtons.Button("Show")]
-        public void Show()
-        {
-            canvasGroup.alpha = 1f;
-        }
-
-        [EasyButtons.Button("Hide")]
-        public void Hide()
-        {
-            canvasGroup.alpha = 0f;
         }
     }
 }
