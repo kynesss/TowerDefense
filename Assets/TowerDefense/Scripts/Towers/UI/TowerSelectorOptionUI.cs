@@ -1,5 +1,6 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,7 @@ namespace TowerDefense.Scripts.Towers.UI
     {
         [SerializeField] private Image icon;
         [SerializeField] private Button button;
+        [SerializeField] private TMP_Text prizeText;
         
         private Action _onClick;
 
@@ -28,14 +30,28 @@ namespace TowerDefense.Scripts.Towers.UI
             _onClick?.Invoke();
         }
 
-        public void Setup(Action onClick, Sprite sprite = null)
+        public void Setup(Action onClick)
         {
             _onClick = onClick;
-            
-            if (sprite != null)
-                icon.sprite = sprite;
-
             ToggleButtonAsync().Forget();
+        }
+
+        public void Setup(Action onClick, Sprite sprite)
+        {
+            icon.sprite = sprite;
+            Setup(onClick);
+        }
+        
+        public void Setup(Action onClick, string text)
+        {
+            prizeText.text = text;
+            Setup(onClick);
+        }
+
+        public void Setup(Action onClick, Sprite sprite, string text)
+        {
+            icon.sprite = sprite;
+            Setup(onClick, text);
         }
 
         private async UniTaskVoid ToggleButtonAsync()

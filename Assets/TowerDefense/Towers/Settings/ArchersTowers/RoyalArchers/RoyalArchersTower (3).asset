@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: RoyalArchersTower
   <RequiredStars>k__BackingField: 5
-  <TowerSprite>k__BackingField: {fileID: 21300000, guid: a0f7f0156de3f7c4f89284e7bf79886d, type: 3}
+  <Prize>k__BackingField: 2200
   <Icon>k__BackingField: {fileID: 21300000, guid: d58ced4eca68092429ba04fc730e6b69, type: 3}
   <Prefab>k__BackingField: {fileID: 9210327308516576676, guid: c8aecc0ca6e3b8c49a317d174bc08030, type: 3}
   <Upgrade>k__BackingField: {fileID: 0}

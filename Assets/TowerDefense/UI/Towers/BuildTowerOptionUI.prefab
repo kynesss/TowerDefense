@@ -137,6 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 4835163885111042046}
   button: {fileID: 1471267779404379535}
+  prizeText: {fileID: 5626858174871478298}
 --- !u!1 &5310914205019343605
 GameObject:
   m_ObjectHideFlags: 0
@@ -277,7 +278,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 94a6277a8b367454b9963b41870d1d82, type: 2}
   m_sharedMaterial: {fileID: 2991308897074226630, guid: 94a6277a8b367454b9963b41870d1d82, type: 2}

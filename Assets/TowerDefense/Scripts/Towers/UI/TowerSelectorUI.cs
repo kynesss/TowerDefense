@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using AYellowpaper.SerializedCollections;
 using JetBrains.Annotations;
 using UnityEngine;
@@ -20,10 +21,10 @@ namespace TowerDefense.Scripts.Towers.UI
         [SerializeField] private GameObject upgradeOptionsContainer;
 
         [SerializeField] private Image image;
-        
+
         private TowerField _towerField;
         private RectTransform RectTransform => transform as RectTransform;
-        
+
         public void Show(TowerField towerField)
         {
             gameObject.SetActive(true);
@@ -50,33 +51,31 @@ namespace TowerDefense.Scripts.Towers.UI
         private void SetupBasicBuildOptions()
         {
             ShowBuildOptions(true);
-            
+
             for (var i = 0; i < buildOptions.Length; i++)
             {
                 var option = buildOptions[i];
                 var tower = basicTowers[i];
-                
-                option.Setup(() =>
-                {
-                    SetupAdvancedBuildOptions(tower);
-                }, tower.Icon);
+
+                option.Setup(() => { SetupAdvancedBuildOptions(tower); }, tower.Icon);
             }
         }
 
         private void SetupAdvancedBuildOptions(TowerData towerType)
         {
             ShowBuildOptions(true);
-            
+
             for (var i = 0; i < buildOptions.Length; i++)
             {
                 var option = buildOptions[i];
                 var tower = towersByType[towerType][i];
-                
+
                 option.Setup(() =>
-                {
-                    _towerField.BuildTower(tower);
-                    Hide();
-                }, tower.Icon);
+                    {
+                        _towerField.BuildTower(tower);
+                        Hide();
+                    }, tower.Icon,
+                    tower.Prize.ToString());
             }
         }
 
@@ -84,19 +83,31 @@ namespace TowerDefense.Scripts.Towers.UI
         {
             ShowBuildOptions(false);
 
-            var isUpgradeAvailable = _towerField.CurrentTowerData.CanUpgrade;
-            upgradeOption.gameObject.SetActive(isUpgradeAvailable);
-            upgradeOption.Setup(() =>
+            var towerData = _towerField.CurrentTowerData;
+            var isUpgradeAvailable = towerData.CanUpgrade;
+            var sellPrice = towerData.Prize / 2;
+
+            if (isUpgradeAvailable)
             {
-                _towerField.UpgradeTower();
-                Hide();
-            });
-            
+                var upgradePrice = towerData.Upgrade.Prize;
+                
+                upgradeOption.gameObject.SetActive(true);
+                upgradeOption.Setup(() =>
+                {
+                    _towerField.UpgradeTower();
+                    Hide();
+                }, upgradePrice.ToString());
+            }
+            else
+            {
+                upgradeOption.gameObject.SetActive(false);
+            }
+
             sellOption.Setup(() =>
             {
                 _towerField.SellTower();
                 Hide();
-            });
+            }, sellPrice.ToString());
         }
 
         private void ShowBuildOptions(bool basic)
