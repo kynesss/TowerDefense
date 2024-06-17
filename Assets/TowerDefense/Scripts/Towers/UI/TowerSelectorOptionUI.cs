@@ -8,9 +8,11 @@ namespace TowerDefense.Scripts.Towers.UI
 {
     public class TowerSelectorOptionUI : MonoBehaviour
     {
-        [SerializeField] private Image icon;
+        [SerializeField] private Image image;
         [SerializeField] private Button button;
         [SerializeField] private TMP_Text prizeText;
+
+        [SerializeField] private Sprite disabledIcon;
         
         private Action _onClick;
 
@@ -21,8 +23,14 @@ namespace TowerDefense.Scripts.Towers.UI
 
         private void OnDisable()
         {
-            _onClick = null;
+            Clear();
             button.onClick.RemoveListener(Button_OnClick);
+        }
+
+        private void Clear()
+        {
+            _onClick = null;
+            prizeText.text = "";
         }
 
         private void Button_OnClick() 
@@ -30,28 +38,35 @@ namespace TowerDefense.Scripts.Towers.UI
             _onClick?.Invoke();
         }
 
-        public void Setup(Action onClick)
+        public void SetupDisabled()
+        {
+            image.sprite = disabledIcon;
+            prizeText.text = "";
+
+            button.interactable = false;
+        }
+        public void SetupEnabled(Action onClick)
         {
             _onClick = onClick;
             ToggleButtonAsync().Forget();
         }
 
-        public void Setup(Action onClick, Sprite sprite)
+        public void SetupEnabled(Action onClick, Sprite sprite)
         {
-            icon.sprite = sprite;
-            Setup(onClick);
+            image.sprite = sprite;
+            SetupEnabled(onClick);
         }
         
-        public void Setup(Action onClick, string text)
+        public void SetupEnabled(Action onClick, string text)
         {
             prizeText.text = text;
-            Setup(onClick);
+            SetupEnabled(onClick);
         }
 
-        public void Setup(Action onClick, Sprite sprite, string text)
+        public void SetupEnabled(Action onClick, Sprite sprite, string text)
         {
-            icon.sprite = sprite;
-            Setup(onClick, text);
+            image.sprite = sprite;
+            SetupEnabled(onClick, text);
         }
 
         private async UniTaskVoid ToggleButtonAsync()

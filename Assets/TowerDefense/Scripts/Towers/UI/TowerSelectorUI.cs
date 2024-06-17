@@ -57,7 +57,7 @@ namespace TowerDefense.Scripts.Towers.UI
                 var option = buildOptions[i];
                 var tower = basicTowers[i];
 
-                option.Setup(() => { SetupAdvancedBuildOptions(tower); }, tower.Icon);
+                option.SetupEnabled(() => { SetupAdvancedBuildOptions(tower); }, tower.Icon);
             }
         }
 
@@ -70,12 +70,21 @@ namespace TowerDefense.Scripts.Towers.UI
                 var option = buildOptions[i];
                 var tower = towersByType[towerType][i];
 
-                option.Setup(() =>
-                    {
-                        _towerField.BuildTower(tower);
-                        Hide();
-                    }, tower.Icon,
-                    tower.Prize.ToString());
+                Debug.Log($"IsUnlocked: {tower.IsUnlocked()}");
+                
+                if (tower.IsUnlocked())
+                {
+                    option.SetupEnabled(() =>
+                        {
+                            _towerField.BuildTower(tower);
+                            Hide();
+                        }, tower.Icon,
+                        tower.Prize.ToString());
+                }
+                else
+                {
+                    option.SetupDisabled();
+                }
             }
         }
 
@@ -90,9 +99,9 @@ namespace TowerDefense.Scripts.Towers.UI
             if (isUpgradeAvailable)
             {
                 var upgradePrice = towerData.Upgrade.Prize;
-                
+
                 upgradeOption.gameObject.SetActive(true);
-                upgradeOption.Setup(() =>
+                upgradeOption.SetupEnabled(() =>
                 {
                     _towerField.UpgradeTower();
                     Hide();
@@ -103,7 +112,7 @@ namespace TowerDefense.Scripts.Towers.UI
                 upgradeOption.gameObject.SetActive(false);
             }
 
-            sellOption.Setup(() =>
+            sellOption.SetupEnabled(() =>
             {
                 _towerField.SellTower();
                 Hide();
