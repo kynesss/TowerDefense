@@ -7,6 +7,7 @@ namespace TowerDefense.Scripts.Towers
     {
         [field: SerializeField] public string Name { get; private set; }
         [field: SerializeField] public int RequiredStars { get; private set; }
+        [field: SerializeField] public int Prize { get; private set; }
         [field: SerializeField] public Sprite Icon { get; private set; }
         [field: SerializeField] public TowerFacade Prefab { get; private set; }
         [field: SerializeField] public TowerData Upgrade { get; private set; }

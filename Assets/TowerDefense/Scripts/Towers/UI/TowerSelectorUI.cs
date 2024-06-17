@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using AYellowpaper.SerializedCollections;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,7 +9,8 @@ namespace TowerDefense.Scripts.Towers.UI
 {
     public class TowerSelectorUI : MonoBehaviour
     {
-        [SerializeField] private TowerData[] towers;
+        [SerializeField] private TowerData[] basicTowers;
+        [SerializeField] private SerializedDictionary<TowerData, List<TowerData>> towersByType;
 
         [SerializeField] private TowerSelectorOptionUI[] basicOptions;
         [SerializeField] private TowerSelectorOptionUI upgradeOption;
@@ -28,11 +31,11 @@ namespace TowerDefense.Scripts.Towers.UI
 
             if (towerField.IsEmpty)
             {
-                SetupBasicOptions();
+                SetupBasicBuildOptions();
             }
             else
             {
-                SetupAdvancedOptions();
+                SetupUpgradeOptions();
             }
 
             SetPositionOnTowerCenter(towerField);
@@ -44,14 +47,30 @@ namespace TowerDefense.Scripts.Towers.UI
             gameObject.SetActive(false);
         }
 
-        private void SetupBasicOptions()
+        private void SetupBasicBuildOptions()
         {
             ShowBasicOptions(true);
             
             for (var i = 0; i < basicOptions.Length; i++)
             {
                 var option = basicOptions[i];
-                var tower = towers[i];
+                var tower = basicTowers[i];
+                
+                option.Setup(() =>
+                {
+                    SetupAdvancedBuildOptions(tower);
+                }, tower.Icon);
+            }
+        }
+
+        private void SetupAdvancedBuildOptions(TowerData towerType)
+        {
+            ShowBasicOptions(true);
+            
+            for (var i = 0; i < basicOptions.Length; i++)
+            {
+                var option = basicOptions[i];
+                var tower = towersByType[towerType][i];
                 
                 option.Setup(() =>
                 {
@@ -61,7 +80,7 @@ namespace TowerDefense.Scripts.Towers.UI
             }
         }
 
-        private void SetupAdvancedOptions()
+        private void SetupUpgradeOptions()
         {
             ShowBasicOptions(false);
 
