@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79d7cc398698f7429cd3407c5e10cc6, type: 3}
+  m_Name: AttackSpeedBuffTower (2)
+  m_EditorClassIdentifier: 
+  <Name>k__BackingField: AttackSpeedBuffTower
+  <RequiredStars>k__BackingField: 10
+  <Icon>k__BackingField: {fileID: 21300000, guid: c9b8bd2970206704fbbf23fefc3572ac, type: 3}
+  <Prefab>k__BackingField: {fileID: 8182868752115228598, guid: b2ede409667c7f24ea6f7a30f2d26574, type: 3}
+  <Upgrade>k__BackingField: {fileID: 11400000, guid: 2f6d43c8bb6527d4b8da3921bcece6d7, type: 2}

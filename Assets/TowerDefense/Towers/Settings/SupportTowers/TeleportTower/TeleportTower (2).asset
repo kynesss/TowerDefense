@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79d7cc398698f7429cd3407c5e10cc6, type: 3}
+  m_Name: TeleportTower (2)
+  m_EditorClassIdentifier: 
+  <Name>k__BackingField: TeleportTower
+  <RequiredStars>k__BackingField: 15
+  <Icon>k__BackingField: {fileID: 21300000, guid: efd90e360c448894b90355542d51cafa, type: 3}
+  <Prefab>k__BackingField: {fileID: 5153890312191504970, guid: c8ac95bad7d990b4eadff28d27868468, type: 3}
+  <Upgrade>k__BackingField: {fileID: 11400000, guid: a49495e5766904149a8291adf187dc46, type: 2}

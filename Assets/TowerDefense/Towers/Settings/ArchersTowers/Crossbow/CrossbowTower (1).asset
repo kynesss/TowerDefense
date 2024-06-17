@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79d7cc398698f7429cd3407c5e10cc6, type: 3}
+  m_Name: CrossbowTower (1)
+  m_EditorClassIdentifier: 
+  <Name>k__BackingField: CrossbowTower
+  <RequiredStars>k__BackingField: 15
+  <Icon>k__BackingField: {fileID: 21300000, guid: 29495d055d1629a46bcdf29f881feaee, type: 3}
+  <Prefab>k__BackingField: {fileID: -1535232970265671202, guid: fb716a436ec9a4b45bd62f3431a47529, type: 3}
+  <Upgrade>k__BackingField: {fileID: 11400000, guid: f2738d3868d6ab845beafa2859992feb, type: 2}

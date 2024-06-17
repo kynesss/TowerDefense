@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a79d7cc398698f7429cd3407c5e10cc6, type: 3}
-  m_Name: ArchersTower (1)
+  m_Name: RoyalArchersTower (1)
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Archers
-  <TowerSprite>k__BackingField: {fileID: 21300000, guid: ca3febae567b118448443c2852c7b952, type: 3}
-  <Icon>k__BackingField: {fileID: 21300000, guid: 29495d055d1629a46bcdf29f881feaee, type: 3}
+  <Name>k__BackingField: RoyalArchersTower
+  <RequiredStars>k__BackingField: 5
+  <TowerSprite>k__BackingField: {fileID: 21300000, guid: 57c6fb4a0a16c184f816ebb639cfc6cb, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: d58ced4eca68092429ba04fc730e6b69, type: 3}
   <Prefab>k__BackingField: {fileID: -8817611765968774352, guid: cbad9d277b10e46489b5ba936f25da89, type: 3}
   <Upgrade>k__BackingField: {fileID: 11400000, guid: 60d7dfdb2d1abbc42ba7b0fa67bd9c72, type: 2}

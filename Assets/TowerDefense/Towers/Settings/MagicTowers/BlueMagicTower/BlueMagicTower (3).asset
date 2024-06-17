@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a79d7cc398698f7429cd3407c5e10cc6, type: 3}
-  m_Name: MagicTower
+  m_Name: BlueMagicTower (3)
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Magic
-  <TowerSprite>k__BackingField: {fileID: 21300000, guid: 99e7cedcc4e4d08489c1a6b48bb6a63c, type: 3}
-  <Icon>k__BackingField: {fileID: 21300000, guid: a7c6c61a344f9de42b8ca71b707a8e07, type: 3}
-  <AnimatorController>k__BackingField: {fileID: 0}
+  <Name>k__BackingField: BlueMagicTower
+  <RequiredStars>k__BackingField: 10
+  <Icon>k__BackingField: {fileID: 21300000, guid: 0a41bb25a41c48a43bf7508b0fa0597f, type: 3}
+  <Prefab>k__BackingField: {fileID: 5584393646996628791, guid: dc29f9666b54bd3428a041969c877eef, type: 3}
   <Upgrade>k__BackingField: {fileID: 0}
