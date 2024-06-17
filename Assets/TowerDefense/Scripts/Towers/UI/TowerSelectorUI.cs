@@ -49,7 +49,7 @@ namespace TowerDefense.Scripts.Towers.UI
 
         private void SetupBasicBuildOptions()
         {
-            ShowBasicOptions(true);
+            ShowBuildOptions(true);
             
             for (var i = 0; i < basicOptions.Length; i++)
             {
@@ -65,7 +65,7 @@ namespace TowerDefense.Scripts.Towers.UI
 
         private void SetupAdvancedBuildOptions(TowerData towerType)
         {
-            ShowBasicOptions(true);
+            ShowBuildOptions(true);
             
             for (var i = 0; i < basicOptions.Length; i++)
             {
@@ -82,7 +82,7 @@ namespace TowerDefense.Scripts.Towers.UI
 
         private void SetupUpgradeOptions()
         {
-            ShowBasicOptions(false);
+            ShowBuildOptions(false);
 
             var isUpgradeAvailable = _towerField.CurrentTowerData.CanUpgrade;
             upgradeOption.gameObject.SetActive(isUpgradeAvailable);
@@ -99,7 +99,7 @@ namespace TowerDefense.Scripts.Towers.UI
             });
         }
 
-        private void ShowBasicOptions(bool basic)
+        private void ShowBuildOptions(bool basic)
         {
             image.enabled = basic;
             basicOptionsContainer.SetActive(basic);
