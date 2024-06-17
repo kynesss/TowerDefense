@@ -12,12 +12,12 @@ namespace TowerDefense.Scripts.Towers.UI
         [SerializeField] private TowerData[] basicTowers;
         [SerializeField] private SerializedDictionary<TowerData, List<TowerData>> towersByType;
 
-        [SerializeField] private TowerSelectorOptionUI[] basicOptions;
+        [SerializeField] private TowerSelectorOptionUI[] buildOptions;
         [SerializeField] private TowerSelectorOptionUI upgradeOption;
         [SerializeField] private TowerSelectorOptionUI sellOption;
 
-        [SerializeField] private GameObject basicOptionsContainer;
-        [SerializeField] private GameObject advancedOptionsContainer;
+        [SerializeField] private GameObject buildOptionsContainer;
+        [SerializeField] private GameObject upgradeOptionsContainer;
 
         [SerializeField] private Image image;
         
@@ -51,9 +51,9 @@ namespace TowerDefense.Scripts.Towers.UI
         {
             ShowBuildOptions(true);
             
-            for (var i = 0; i < basicOptions.Length; i++)
+            for (var i = 0; i < buildOptions.Length; i++)
             {
-                var option = basicOptions[i];
+                var option = buildOptions[i];
                 var tower = basicTowers[i];
                 
                 option.Setup(() =>
@@ -67,9 +67,9 @@ namespace TowerDefense.Scripts.Towers.UI
         {
             ShowBuildOptions(true);
             
-            for (var i = 0; i < basicOptions.Length; i++)
+            for (var i = 0; i < buildOptions.Length; i++)
             {
-                var option = basicOptions[i];
+                var option = buildOptions[i];
                 var tower = towersByType[towerType][i];
                 
                 option.Setup(() =>
@@ -102,8 +102,8 @@ namespace TowerDefense.Scripts.Towers.UI
         private void ShowBuildOptions(bool basic)
         {
             image.enabled = basic;
-            basicOptionsContainer.SetActive(basic);
-            advancedOptionsContainer.SetActive(!basic);
+            buildOptionsContainer.SetActive(basic);
+            upgradeOptionsContainer.SetActive(!basic);
         }
 
         private void SetPositionOnTowerCenter([NotNull] TowerField towerField)
