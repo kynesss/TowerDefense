@@ -16,12 +16,21 @@ namespace TowerDefense.Scripts.Towers
 
         public bool IsUnlocked()
         {
-            if (UnlockedOnStart)
-                return true;
+            return UnlockedOnStart || PlayerPrefs.HasKey(Name);
+        }
 
-            // TODO: Load Player's stars and compare them with RequiredStars
+        public bool TryUnlock(int starsAmount)
+        {
+            if (starsAmount < RequiredStars)
+            {
+                Debug.Log($"You need at least: {RequiredStars} to unlock this Tower!");
+                return false;
+            }
             
-            return false;
+            // TODO: decrease Player's star amount
+            PlayerPrefs.SetString(Name, "");
+            
+            return true;
         }
     }
 }
