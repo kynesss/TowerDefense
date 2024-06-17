@@ -12,10 +12,11 @@ namespace TowerDefense.Scripts.Towers
         [field: SerializeField] public TowerData Upgrade { get; private set; }
 
         public bool CanUpgrade => Upgrade != null;
+        private bool UnlockedOnStart => RequiredStars == 0;
 
         public bool IsUnlocked()
         {
-            if (RequiredStars == 0)
+            if (UnlockedOnStart)
                 return true;
 
             // TODO: Load Player's stars and compare them with RequiredStars
