@@ -1,4 +1,5 @@
 ﻿using System;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,11 +15,11 @@ namespace TowerDefense.Scripts.Towers.UI
         private void OnEnable()
         {
             button.onClick.AddListener(Button_OnClick);
-            button.interactable = false;
         }
 
         private void OnDisable()
         {
+            _onClick = null;
             button.onClick.RemoveListener(Button_OnClick);
         }
 
@@ -34,6 +35,13 @@ namespace TowerDefense.Scripts.Towers.UI
             if (sprite != null)
                 icon.sprite = sprite;
 
+            ToggleButtonAsync().Forget();
+        }
+
+        private async UniTaskVoid ToggleButtonAsync()
+        {
+            button.interactable = false;
+            await UniTask.Delay(200);
             button.interactable = true;
         }
     }
