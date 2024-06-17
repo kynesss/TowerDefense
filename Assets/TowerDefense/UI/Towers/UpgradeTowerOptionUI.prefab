@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5298043573139825750}
   - component: {fileID: 3659250517551413512}
   m_Layer: 5
-  m_Name: AdvancedTowerOptionUI
+  m_Name: UpgradeTowerOptionUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

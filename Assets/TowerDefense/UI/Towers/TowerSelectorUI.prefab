@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8500334306917674518}
   m_Layer: 5
-  m_Name: AdvancedOptions
+  m_Name: UpgradeOptions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,7 +47,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4004732659308820745}
   m_Layer: 5
-  m_Name: BasicOptions
+  m_Name: BuildOptions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -297,7 +297,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8270347408849997639, guid: 7c62861056cdc4647bd66625d08ee06a, type: 3}
       propertyPath: m_Name
-      value: AdvancedTowerOptionUI (Upgrade)
+      value: UpgradeTowerOptionUI (Upgrade)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -330,7 +330,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 773988940779781245, guid: b4dd37c70313b4b4e8204f6311660a64, type: 3}
       propertyPath: m_Name
-      value: BasicTowerOptionUI (1)
+      value: BuildTowerOptionUI
       objectReference: {fileID: 0}
     - target: {fileID: 2651919264204297164, guid: b4dd37c70313b4b4e8204f6311660a64, type: 3}
       propertyPath: m_Pivot.x
@@ -443,7 +443,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 773988940779781245, guid: b4dd37c70313b4b4e8204f6311660a64, type: 3}
       propertyPath: m_Name
-      value: BasicTowerOptionUI (3)
+      value: BuildTowerOptionUI
       objectReference: {fileID: 0}
     - target: {fileID: 2651919264204297164, guid: b4dd37c70313b4b4e8204f6311660a64, type: 3}
       propertyPath: m_Pivot.x
@@ -556,7 +556,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1969565307263129184, guid: f246e698d0c77e34097aa819f9df64b9, type: 3}
       propertyPath: m_Name
-      value: AdvancedTowerOptionUI (Sell)
+      value: UpgradeTowerOptionUI (Sell)
       objectReference: {fileID: 0}
     - target: {fileID: 5143913122437210090, guid: f246e698d0c77e34097aa819f9df64b9, type: 3}
       propertyPath: m_Pivot.x
@@ -669,7 +669,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 773988940779781245, guid: b4dd37c70313b4b4e8204f6311660a64, type: 3}
       propertyPath: m_Name
-      value: BasicTowerOptionUI
+      value: BuildTowerOptionUI
       objectReference: {fileID: 0}
     - target: {fileID: 2651919264204297164, guid: b4dd37c70313b4b4e8204f6311660a64, type: 3}
       propertyPath: m_Pivot.x
@@ -786,7 +786,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 773988940779781245, guid: b4dd37c70313b4b4e8204f6311660a64, type: 3}
       propertyPath: m_Name
-      value: BasicTowerOptionUI (2)
+      value: BuildTowerOptionUI
       objectReference: {fileID: 0}
     - target: {fileID: 2651919264204297164, guid: b4dd37c70313b4b4e8204f6311660a64, type: 3}
       propertyPath: m_Pivot.x
