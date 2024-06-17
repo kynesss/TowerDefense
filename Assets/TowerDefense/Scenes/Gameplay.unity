@@ -123,6 +123,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &232236031
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 232236032}
+  m_Layer: 0
+  m_Name: TowerParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &232236032
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 232236031}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 401519406}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &257636503
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -177,7 +208,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4666117602346281711, guid: 69a2d12c0b9259a47a2df21b09b625fe, type: 3}
       propertyPath: m_Name
-      value: TowerField (5)
+      value: TowerField
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -274,9 +305,10 @@ Transform:
   m_LocalScale: {x: 75.96, y: 62.399998, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1591574268}
-  - {fileID: 1907729887}
+  - {fileID: 982729232}
   - {fileID: 1255343716}
+  - {fileID: 1717727942}
+  - {fileID: 232236032}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &401519407
@@ -693,7 +725,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4666117602346281711, guid: 69a2d12c0b9259a47a2df21b09b625fe, type: 3}
       propertyPath: m_Name
-      value: TowerField (6)
+      value: TowerField
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -809,7 +841,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4666117602346281711, guid: 69a2d12c0b9259a47a2df21b09b625fe, type: 3}
       propertyPath: m_Name
-      value: TowerField (3)
+      value: TowerField
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -826,6 +858,39 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 294446360240272851, guid: 69a2d12c0b9259a47a2df21b09b625fe, type: 3}
   m_PrefabInstance: {fileID: 3283747033939359360}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &982729231
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 982729232}
+  m_Layer: 6
+  m_Name: WaveSpawners
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &982729232
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982729231}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1591574268}
+  - {fileID: 1907729887}
+  m_Father: {fileID: 401519406}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1255343715
 GameObject:
   m_ObjectHideFlags: 0
@@ -1225,6 +1290,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96faff2a6e4f1a1488479be9654485b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyParentGroup: {fileID: 1717727942}
+  towerParentGroup: {fileID: 232236032}
 --- !u!114 &1413090000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1291,7 +1358,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4666117602346281711, guid: 69a2d12c0b9259a47a2df21b09b625fe, type: 3}
       propertyPath: m_Name
-      value: TowerField (4)
+      value: TowerField
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1357,7 +1424,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4666117602346281711, guid: 69a2d12c0b9259a47a2df21b09b625fe, type: 3}
       propertyPath: m_Name
-      value: TowerField (1)
+      value: TowerField
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1396,11 +1463,11 @@ Transform:
   m_GameObject: {fileID: 1591574267}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.24605057, y: 0.35320517, z: 0}
+  m_LocalPosition: {x: 0.24605055, y: 0.3532052, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 401519406}
+  m_Father: {fileID: 982729232}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1591574269
 MonoBehaviour:
@@ -1509,6 +1576,37 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 7, y: 3.82}
   m_EdgeRadius: 0
+--- !u!1 &1717727941
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1717727942}
+  m_Layer: 0
+  m_Name: EnemyParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1717727942
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1717727941}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 401519406}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1814491465
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1563,7 +1661,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4666117602346281711, guid: 69a2d12c0b9259a47a2df21b09b625fe, type: 3}
       propertyPath: m_Name
-      value: TowerField (2)
+      value: TowerField
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1674,7 +1772,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 401519406}
+  m_Father: {fileID: 982729232}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1907729888
 MonoBehaviour:

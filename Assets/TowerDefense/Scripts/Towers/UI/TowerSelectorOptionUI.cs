@@ -14,6 +14,7 @@ namespace TowerDefense.Scripts.Towers.UI
         private void OnEnable()
         {
             button.onClick.AddListener(Button_OnClick);
+            button.interactable = false;
         }
 
         private void OnDisable()
@@ -32,6 +33,8 @@ namespace TowerDefense.Scripts.Towers.UI
             
             if (sprite != null)
                 icon.sprite = sprite;
+
+            button.interactable = true;
         }
     }
 }
