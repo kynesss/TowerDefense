@@ -69,8 +69,6 @@ namespace TowerDefense.Scripts.Towers.UI
             {
                 var option = buildOptions[i];
                 var tower = towersByType[towerType][i];
-
-                Debug.Log($"IsUnlocked: {tower.IsUnlocked()}");
                 
                 if (tower.IsUnlocked())
                 {
