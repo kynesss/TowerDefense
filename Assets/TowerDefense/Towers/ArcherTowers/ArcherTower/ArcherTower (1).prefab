@@ -329,6 +329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1e77ec302b432b985494843f5e1af7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  segments: 50
 --- !u!114 &6387097563134213341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,3 +342,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 318fbaa966f9ea0419ea7f4577110e04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 3374644518860826132, guid: fdf5d5a599ab189429a7a70554f59ecf, type: 3}

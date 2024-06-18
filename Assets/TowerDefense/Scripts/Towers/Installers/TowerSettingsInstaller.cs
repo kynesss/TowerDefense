@@ -11,13 +11,15 @@ namespace TowerDefense.Scripts.Towers.Installers
         
         public override void InstallBindings()
         {
+            Container.BindInstance(settings.TargetDetector).IfNotBound();
             Container.BindInstance(settings.Attack).IfNotBound();
         }
 
         [Serializable]
         public class Settings
         {
-            [field: SerializeField] public TowerTargetDetector.Settings Attack { get; private set; }
+            [field: SerializeField] public TowerTargetDetector.Settings TargetDetector { get; private set; }
+            [field: SerializeField] public TowerAttackHandler.Settings Attack { get; private set; }
         }
     }
 }

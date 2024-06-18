@@ -12,7 +12,8 @@ namespace TowerDefense.Scripts.Towers
 
         private Collider2D _targetCollider;
         private Collider2D[] _results = new Collider2D[10];
-        private bool HasTarget => _targetCollider != null && _results.Contains(_targetCollider);
+        public bool HasTarget => _targetCollider != null && _results.Contains(_targetCollider);
+        public Transform Target => _targetCollider.transform;
 
         public TowerTargetDetector(Settings settings, Transform transform)
         {
@@ -68,7 +69,6 @@ namespace TowerDefense.Scripts.Towers
         public class Settings
         {
             [field: SerializeField] public float RangeRadius { get; private set; }
-            [field: SerializeField] public float Rate { get; private set; }
             [field: SerializeField] public LayerMask TargetLayerMask { get; private set; }
         }
     }
