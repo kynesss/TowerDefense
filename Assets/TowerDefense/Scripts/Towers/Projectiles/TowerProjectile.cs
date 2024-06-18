@@ -24,9 +24,13 @@ namespace TowerDefense.Scripts.Towers.Projectiles
             _pool.Despawn(this);
         }
 
-        public class Factory : PlaceholderFactory<TowerProjectile>
+        public void Restart()
         {
-            
+            transform.position = Vector3.zero;
+        }
+
+        public class Pool : MonoMemoryPool<TowerProjectile>
+        {
         }
     }
 }

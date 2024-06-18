@@ -8,7 +8,7 @@ namespace TowerDefense.Scripts.Towers
     public class TowerAttackHandler : ITickable
     {
         private readonly TowerTargetDetector _targetDetector;
-        private readonly TowerProjectile.Factory _factory;
+        private readonly TowerProjectile.Pool _pool;
         private readonly Settings _settings;
         private readonly Transform _transform;
 
@@ -17,12 +17,12 @@ namespace TowerDefense.Scripts.Towers
         
         public TowerAttackHandler(
             TowerTargetDetector targetDetector, 
-            TowerProjectile.Factory factory, 
+            TowerProjectile.Pool pool, 
             Settings settings,
             Transform transform)
         {
             _targetDetector = targetDetector;
-            _factory = factory;
+            _pool = pool;
             _settings = settings;
             _transform = transform;
         }
@@ -42,8 +42,10 @@ namespace TowerDefense.Scripts.Towers
 
         private void SpawnProjectile()
         {
-            var projectile = _factory.Create();
+            var projectile = _pool.Spawn();
             projectile.transform.position = _transform.position;
+            
+            Debug.Log($"Spawn projectile");
         }
 
         [Serializable]

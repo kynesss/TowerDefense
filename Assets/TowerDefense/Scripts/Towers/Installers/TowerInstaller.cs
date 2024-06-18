@@ -15,10 +15,10 @@ namespace TowerDefense.Scripts.Towers.Installers
             Container.BindInterfacesAndSelfTo<TowerTargetDetector>().AsSingle();
             Container.BindInterfacesAndSelfTo<TowerAttackHandler>().AsSingle();
 
-            Container.BindFactory<TowerProjectile, TowerProjectile.Factory>().FromMonoPoolableMemoryPool(
-                x => x.WithInitialSize(5)
-                    .FromComponentInNewPrefab(projectilePrefab)
-                    .UnderTransformGroup("ProjectilePool"));
+            Container.BindMemoryPool<TowerProjectile, TowerProjectile.Pool>()
+                .WithInitialSize(5)
+                .FromComponentInNewPrefab(projectilePrefab)
+                .UnderTransformGroup("Projectiles");
         }
     }
 }

@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: ArcherTowerSettingsInstaller
   m_EditorClassIdentifier: 
   settings:
-    <Attack>k__BackingField:
+    <TargetDetector>k__BackingField:
       <RangeRadius>k__BackingField: 10
-      <Rate>k__BackingField: 1
       <TargetLayerMask>k__BackingField:
         serializedVersion: 2
         m_Bits: 256
+    <Attack>k__BackingField:
+      <Rate>k__BackingField: 1
