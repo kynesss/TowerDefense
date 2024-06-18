@@ -5,7 +5,7 @@ using Zenject;
 
 namespace TowerDefense.Scripts.Towers
 {
-    public class TowerAttackHandler : ITickable
+    public class TowerTargetDetector : ITickable
     {
         private readonly Settings _settings;
         private readonly Transform _transform;
@@ -14,7 +14,7 @@ namespace TowerDefense.Scripts.Towers
         private Collider2D[] _results = new Collider2D[10];
         private bool HasTarget => _targetCollider != null && _results.Contains(_targetCollider);
 
-        public TowerAttackHandler(Settings settings, Transform transform)
+        public TowerTargetDetector(Settings settings, Transform transform)
         {
             _settings = settings;
             _transform = transform;
@@ -23,24 +23,27 @@ namespace TowerDefense.Scripts.Towers
         public void Tick()
         {
             _results = new Collider2D[10];
-            var hitInfo = Physics2D.OverlapCircleNonAlloc(_transform.position, _settings.RangeRadius, _results, _settings.TargetLayerMask);
-            if (hitInfo == 0) 
-                return;
             
-            if (HasTarget)
-            {
-                Debug.Log($"Target is: {_targetCollider.gameObject.name}");
-            }
-            else
-            {
-                foreach (var result in _results)
-                {
-                    if (result == null)
-                        continue;
+            var hitInfo = Physics2D.OverlapCircleNonAlloc(_transform.position, _settings.RangeRadius, _results,
+                _settings.TargetLayerMask);
 
-                    _targetCollider = result;
-                    Debug.LogError($"Result: {result.gameObject.name}");
-                }
+            if (hitInfo == 0)
+                return;
+
+            if (HasTarget)
+                return;
+
+            FindTargetInRange();
+        }
+
+        private void FindTargetInRange()
+        {
+            foreach (var result in _results)
+            {
+                if (result == null)
+                    continue;
+
+                _targetCollider = result;
             }
         }
 
@@ -53,7 +56,7 @@ namespace TowerDefense.Scripts.Towers
             {
                 angle += 2 * Mathf.PI / segments;
                 var newPosition = center + new Vector3(Mathf.Cos(angle), Mathf.Sin(angle)) * _settings.RangeRadius;
-                
+
                 Gizmos.color = Color.blue;
                 Gizmos.DrawLine(lastPosition, newPosition);
 

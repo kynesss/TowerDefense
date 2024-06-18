@@ -9,12 +9,12 @@ namespace TowerDefense.Scripts.Towers
         [Header("Gizmos")]
         [SerializeField] private int segments = 50;
         
-        private TowerAttackHandler _attackHandler;
+        private TowerTargetDetector _targetDetector;
 
         [Inject]
-        private void Construct(TowerAttackHandler attackHandler)
+        private void Construct(TowerTargetDetector targetDetector)
         {
-            _attackHandler = attackHandler;
+            _targetDetector = targetDetector;
         }
         
         public void SetParentAndPosition(Transform parent, Vector3 position)
@@ -26,7 +26,7 @@ namespace TowerDefense.Scripts.Towers
 #if UNITY_EDITOR
         private void OnDrawGizmosSelected()
         {
-            _attackHandler.DrawRangeCircle(transform.position, segments);
+            _targetDetector.DrawRangeCircle(transform.position, segments);
         }
 #endif
         

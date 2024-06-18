@@ -7,7 +7,7 @@ namespace TowerDefense.Scripts.Towers.Installers
         public override void InstallBindings()
         {
             Container.BindInstance(transform).AsSingle();
-            Container.BindInterfacesAndSelfTo<TowerAttackHandler>().AsSingle();
+            Container.BindInterfacesAndSelfTo<TowerTargetDetector>().AsSingle();
         }
     }
 }

@@ -16,3 +16,6 @@ MonoBehaviour:
     <Attack>k__BackingField:
       <RangeRadius>k__BackingField: 10
       <Rate>k__BackingField: 1
+      <TargetLayerMask>k__BackingField:
+        serializedVersion: 2
+        m_Bits: 256

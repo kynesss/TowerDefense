@@ -17,7 +17,7 @@ namespace TowerDefense.Scripts.Towers.Installers
         [Serializable]
         public class Settings
         {
-            [field: SerializeField] public TowerAttackHandler.Settings Attack { get; private set; }
+            [field: SerializeField] public TowerTargetDetector.Settings Attack { get; private set; }
         }
     }
 }
