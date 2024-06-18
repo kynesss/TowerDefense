@@ -1,5 +1,5 @@
 ﻿using System;
-using TowerDefense.Scripts.Towers.Projectiles;
+using TowerDefense.Scripts.Projectiles;
 using UnityEngine;
 using Zenject;
 
@@ -44,8 +44,6 @@ namespace TowerDefense.Scripts.Towers
         {
             var projectile = _pool.Spawn(_targetDetector.Target);
             projectile.transform.position = _transform.position;
-            
-            Debug.Log($"Spawn projectile");
         }
 
         [Serializable]

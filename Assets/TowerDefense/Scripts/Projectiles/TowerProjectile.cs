@@ -2,17 +2,20 @@
 using UnityEngine;
 using Zenject;
 
-namespace TowerDefense.Scripts.Towers.Projectiles
+namespace TowerDefense.Scripts.Projectiles
 {
     public class TowerProjectile : MonoBehaviour
     {
         private Transform _target;
+        
         private Pool _pool;
+        private TowerProjectileMovement _movement;
         
         [Inject]
-        private void Construct(Pool pool)
+        private void Construct(Pool pool, TowerProjectileMovement movement)
         {
             _pool = pool;
+            _movement = movement;
         }
 
         private void SetTarget(Transform target)
@@ -24,8 +27,7 @@ namespace TowerDefense.Scripts.Towers.Projectiles
         {
             if (_target != null)
             {
-                var direction = (_target.position - transform.position).normalized;
-                transform.position += direction * 10f * Time.deltaTime;
+                _movement.MoveTowards(_target.position);
             }
         }
         

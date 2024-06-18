@@ -9,10 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4020652686751340584}
+  - component: {fileID: 5306817322284864999}
   - component: {fileID: 8138045052965316439}
   - component: {fileID: 1483153487477608747}
   - component: {fileID: 793256226792145984}
   - component: {fileID: 1357794874722470036}
+  - component: {fileID: 3519060028937320799}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
@@ -35,6 +37,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5306817322284864999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3374644518860826132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08eca9f7688a0a24685b89133b020c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scriptableObjectInstallers:
+  - {fileID: 11400000, guid: 9d7d71a47c781cd4a8a75ce5d831d2f8, type: 2}
+  _monoInstallers:
+  - {fileID: 3519060028937320799}
+  _installerPrefabs: []
+  _autoRun: 1
+  _kernel: {fileID: 0}
 --- !u!212 &8138045052965316439
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -169,5 +190,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3588ba2c123e4bcc9dd0acb4ece8ed64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3519060028937320799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3374644518860826132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3458e4dd6b34771419b61efd7aeddb92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

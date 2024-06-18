@@ -1,4 +1,4 @@
-using TowerDefense.Scripts.Towers.Projectiles;
+using TowerDefense.Scripts.Projectiles;
 using UnityEngine;
 using Zenject;
 
