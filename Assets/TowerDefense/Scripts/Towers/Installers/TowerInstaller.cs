@@ -7,14 +7,36 @@ namespace TowerDefense.Scripts.Towers.Installers
     public class TowerInstaller : MonoInstaller
     {
         [SerializeField] private GameObject projectilePrefab;
+        [SerializeField] private Animator animator;
 
         public override void InstallBindings()
         {
-            Container.BindInstance(transform).AsSingle();
+            BindSignals();
+            BindInstances();
+            BindHandlers();
+            BindPools();
+        }
 
+        private void BindSignals()
+        {
+            Container.DeclareSignal<TowerTargetChangedSignal>();
+        }
+
+        private void BindInstances()
+        {
+            Container.BindInstance(transform).AsSingle();
+            Container.BindInstance(animator).AsSingle();
+        }
+
+        private void BindHandlers()
+        {
             Container.BindInterfacesAndSelfTo<TowerTargetDetector>().AsSingle();
             Container.BindInterfacesAndSelfTo<TowerAttackHandler>().AsSingle();
+            Container.BindInterfacesAndSelfTo<TowerAnimationHandler>().AsSingle();
+        }
 
+        private void BindPools()
+        {
             Container.BindMemoryPool<TowerProjectile, TowerProjectile.Pool>()
                 .WithInitialSize(1)
                 .FromComponentInNewPrefab(projectilePrefab)

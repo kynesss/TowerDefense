@@ -343,3 +343,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 3374644518860826132, guid: fdf5d5a599ab189429a7a70554f59ecf, type: 3}
+  animator: {fileID: 6550908530095958436}

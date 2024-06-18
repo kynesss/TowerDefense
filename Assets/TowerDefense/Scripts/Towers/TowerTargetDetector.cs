@@ -9,16 +9,18 @@ namespace TowerDefense.Scripts.Towers
     {
         private readonly Settings _settings;
         private readonly Transform _transform;
+        private readonly SignalBus _signalBus;
 
         private Collider2D _targetCollider;
         private Collider2D[] _results = new Collider2D[10];
         public bool HasTarget => _targetCollider != null && _results.Contains(_targetCollider);
         public Transform Target => _targetCollider.transform;
-
-        public TowerTargetDetector(Settings settings, Transform transform)
+        
+        public TowerTargetDetector(Settings settings, Transform transform, SignalBus signalBus)
         {
             _settings = settings;
             _transform = transform;
+            _signalBus = signalBus;
         }
 
         public void Tick()
@@ -44,8 +46,14 @@ namespace TowerDefense.Scripts.Towers
                 if (result == null)
                     continue;
 
-                _targetCollider = result;
+                SetTarget(result);
             }
+        }
+
+        private void SetTarget(Collider2D result)
+        {
+            _targetCollider = result;
+            _signalBus.Fire(new TowerTargetChangedSignal(Target));
         }
 
         public void DrawRangeCircle(Vector3 center, int segments)
