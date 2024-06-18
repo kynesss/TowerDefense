@@ -32,7 +32,6 @@ namespace TowerDefense.Scripts.Towers
             if (CanAttack)
             {
                 SpawnProjectile();
-                _attackTimer = _settings.Rate;
             }
             else
             {
@@ -45,6 +44,8 @@ namespace TowerDefense.Scripts.Towers
             var spawnPosition =_transform.position + Vector3.up * _transform.lossyScale.x;
             var projectile = _pool.Spawn(_targetDetector.Target);
             projectile.transform.position = spawnPosition;
+            
+            _attackTimer = _settings.Rate;
         }
 
         [Serializable]
