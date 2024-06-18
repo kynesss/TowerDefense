@@ -42,8 +42,9 @@ namespace TowerDefense.Scripts.Towers
 
         private void SpawnProjectile()
         {
+            var spawnPosition =_transform.position + Vector3.up * _transform.lossyScale.x;
             var projectile = _pool.Spawn(_targetDetector.Target);
-            projectile.transform.position = _transform.position;
+            projectile.transform.position = spawnPosition;
         }
 
         [Serializable]

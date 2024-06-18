@@ -27,7 +27,7 @@ namespace TowerDefense.Scripts.Projectiles
         {
             if (_target != null)
             {
-                _movement.MoveTowards(_target.position);
+                _movement.FollowTarget(_target.position);
             }
         }
         
