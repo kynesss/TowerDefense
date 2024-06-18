@@ -16,7 +16,7 @@ namespace TowerDefense.Scripts.Towers.Installers
             Container.BindInterfacesAndSelfTo<TowerAttackHandler>().AsSingle();
 
             Container.BindMemoryPool<TowerProjectile, TowerProjectile.Pool>()
-                .WithInitialSize(5)
+                .WithInitialSize(1)
                 .FromComponentInNewPrefab(projectilePrefab)
                 .UnderTransformGroup("Projectiles");
         }

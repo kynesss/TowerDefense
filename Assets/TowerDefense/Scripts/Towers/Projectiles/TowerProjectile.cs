@@ -1,36 +1,54 @@
-﻿using System;
+﻿using TowerDefense.Scripts.AI;
 using UnityEngine;
 using Zenject;
 
 namespace TowerDefense.Scripts.Towers.Projectiles
 {
-    // TODO: That should be MonoMemoryPool instead of MemoryPool or Factory
-    public class TowerProjectile : MonoBehaviour, IPoolable<IMemoryPool>, IDisposable
+    public class TowerProjectile : MonoBehaviour
     {
-        private IMemoryPool _pool;
+        private Transform _target;
+        private Pool _pool;
         
-        public void OnSpawned(IMemoryPool pool)
+        [Inject]
+        private void Construct(Pool pool)
         {
             _pool = pool;
         }
 
-        public void OnDespawned()
+        private void SetTarget(Transform target)
         {
-            _pool = null;
+            _target = target;
+        }
+        
+        private void Update()
+        {
+            if (_target != null)
+            {
+                var direction = (_target.position - transform.position).normalized;
+                transform.position += direction * 10f * Time.deltaTime;
+            }
+        }
+        
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.gameObject.TryGetComponent<EnemyStateMachine>(out var enemy))
+            {
+                _pool.Despawn(this);
+            }
         }
 
-        public void Dispose()
+        public class Pool : MonoMemoryPool<Transform, TowerProjectile>
         {
-            _pool.Despawn(this);
-        }
+            protected override void Reinitialize(Transform target, TowerProjectile item)
+            {
+                item.SetTarget(target);
+            }
 
-        public void Restart()
-        {
-            transform.position = Vector3.zero;
-        }
-
-        public class Pool : MonoMemoryPool<TowerProjectile>
-        {
+            protected override void OnDespawned(TowerProjectile item)
+            {
+                base.OnDespawned(item);
+                item.SetTarget(null);
+            }
         }
     }
 }

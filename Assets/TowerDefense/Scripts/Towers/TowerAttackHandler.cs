@@ -42,7 +42,7 @@ namespace TowerDefense.Scripts.Towers
 
         private void SpawnProjectile()
         {
-            var projectile = _pool.Spawn();
+            var projectile = _pool.Spawn(_targetDetector.Target);
             projectile.transform.position = _transform.position;
             
             Debug.Log($"Spawn projectile");
