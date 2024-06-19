@@ -1,7 +1,7 @@
 ﻿using JetBrains.Annotations;
 using TowerDefense.Scripts.AI;
 
-namespace TowerDefense.Scripts.Towers
+namespace TowerDefense.Scripts.Towers.Signals
 {
     public class TowerTargetChangedSignal
     {
