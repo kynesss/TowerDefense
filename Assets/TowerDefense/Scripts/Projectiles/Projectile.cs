@@ -1,5 +1,4 @@
-﻿using TowerDefense.Scripts.AI;
-using UnityEngine;
+﻿using UnityEngine;
 using Zenject;
 
 namespace TowerDefense.Scripts.Projectiles
@@ -22,26 +21,41 @@ namespace TowerDefense.Scripts.Projectiles
             _movementHandler = movementHandler;
             _damageHandler = damageHandler;
         }
-
+        
         private void SetTarget(Transform target)
         {
             _target = target;
         }
+
+        private void Despawn()
+        {
+            if (gameObject.activeSelf)
+                _pool.Despawn(this);
+        }
         
         private void Update()
         {
-            if (_target != null)
+            if (_target == null) 
+                return;
+
+            var position = transform.position;
+            var targetPosition = _target.position;
+
+            if (Vector3.SqrMagnitude(position - targetPosition) < 0.05f)
             {
-                _movementHandler.FollowTarget(_target.position);
+                Despawn();
+                return;
             }
+            
+            _movementHandler.FollowTarget(targetPosition);
         }
-        
+
         private void OnTriggerEnter2D(Collider2D other)
         {
             _damageHandler.ApplyDamage(other);
-            _pool.Despawn(this);
+            Despawn();
         }
-
+        
         public class Pool : MonoMemoryPool<Transform, Projectile>
         {
             protected override void Reinitialize(Transform target, Projectile item)

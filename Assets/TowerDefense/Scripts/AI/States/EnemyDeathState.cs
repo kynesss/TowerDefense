@@ -12,6 +12,8 @@ namespace TowerDefense.Scripts.AI.States
         private readonly EnemyAnimationHandler _animationHandler;
         private readonly Collider2D _collider;
         private readonly Settings _settings;
+
+        private float _timeToDisableCollision;
         
         public EnemyDeathState(
             EnemyStateMachine stateMachine, 
@@ -31,6 +33,7 @@ namespace TowerDefense.Scripts.AI.States
             Debug.Log($"Initialize Death State!");
             
             _collider.enabled = false;
+            
             _movementHandler.Stop();
             _animationHandler.PlayStateAnimation(EnemyState.Death);
             

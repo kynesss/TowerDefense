@@ -25,7 +25,7 @@ namespace TowerDefense.Scripts.Towers
             }
         }
 
-        public bool HasTarget => Target != null;
+        public bool HasTarget => Target != null && Target.IsAlive;
         public TowerTargetDetector(Settings settings, Transform transform, SignalBus signalBus)
         {
             _settings = settings;
@@ -35,14 +35,6 @@ namespace TowerDefense.Scripts.Towers
 
         public void Tick()
         {
-            _results = new Collider2D[10];
-            
-            var hitInfo = Physics2D.OverlapCircleNonAlloc(_transform.position, _settings.RangeRadius, _results,
-                _settings.TargetLayerMask);
-
-            if (hitInfo == 0)
-                return;
-
             if (HasTarget)
             {
                 if (!Target.IsAlive)
@@ -58,6 +50,14 @@ namespace TowerDefense.Scripts.Towers
 
         private void SearchForTarget()
         {
+            _results = new Collider2D[10];
+            
+            var hitInfo = Physics2D.OverlapCircleNonAlloc(_transform.position, _settings.RangeRadius, _results,
+                _settings.TargetLayerMask);
+
+            if (hitInfo == 0)
+                return;
+            
             foreach (var result in _results)
             {
                 if (result == null)
