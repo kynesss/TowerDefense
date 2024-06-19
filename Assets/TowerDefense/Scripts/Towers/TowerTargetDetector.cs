@@ -24,7 +24,8 @@ namespace TowerDefense.Scripts.Towers
                 _signalBus.Fire(new TowerTargetChangedSignal(value));
             }
         }
-        public bool HasTarget => Target != null && Target.IsAlive;
+
+        public bool HasTarget => Target != null;
         public TowerTargetDetector(Settings settings, Transform transform, SignalBus signalBus)
         {
             _settings = settings;
@@ -43,9 +44,16 @@ namespace TowerDefense.Scripts.Towers
                 return;
 
             if (HasTarget)
-                return;
-            
-            SearchForTarget();
+            {
+                if (!Target.IsAlive)
+                {
+                    Target = null;
+                }
+            } 
+            else
+            {
+                SearchForTarget();
+            }
         }
 
         private void SearchForTarget()
