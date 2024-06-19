@@ -7,19 +7,23 @@ namespace TowerDefense.Scripts.AI.States
     {
         private readonly EnemyMovementHandler _movementHandler;
         private readonly EnemyAnimationHandler _animationHandler;
+        private readonly Collider2D _collider;
         
         public EnemyDeathState(
             EnemyStateMachine stateMachine, 
             EnemyMovementHandler movementHandler, 
-            EnemyAnimationHandler animationHandler) : base(stateMachine)
+            EnemyAnimationHandler animationHandler, 
+            Collider2D collider) : base(stateMachine)
         {
             _movementHandler = movementHandler;
             _animationHandler = animationHandler;
+            _collider = collider;
         }
 
         public override void Initialize()
         {
             Debug.Log($"Initialize Death State!");
+            _collider.enabled = false;
             _movementHandler.Stop();
             _animationHandler.PlayStateAnimation(EnemyState.Death);
         }

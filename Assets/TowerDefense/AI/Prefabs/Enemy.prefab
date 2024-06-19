@@ -400,6 +400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aiPath: {fileID: 4542572656347271507}
   animator: {fileID: 2102831588114990224}
+  collider2d: {fileID: 2040283159758115766}
 --- !u!1 &3833858374121825666
 GameObject:
   m_ObjectHideFlags: 0
