@@ -1,13 +1,13 @@
 ﻿using JetBrains.Annotations;
-using UnityEngine;
+using TowerDefense.Scripts.AI;
 
 namespace TowerDefense.Scripts.Towers
 {
     public class TowerTargetChangedSignal
     {
-        [CanBeNull] public Transform Target { get; private set; }
+        [CanBeNull] public EnemyStateMachine Target { get; private set; }
 
-        public TowerTargetChangedSignal(Transform target)
+        public TowerTargetChangedSignal(EnemyStateMachine target)
         {
             Target = target;
         }

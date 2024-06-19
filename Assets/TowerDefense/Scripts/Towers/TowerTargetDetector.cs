@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using TowerDefense.Scripts.AI;
 using UnityEngine;
 using Zenject;
 
@@ -11,11 +12,19 @@ namespace TowerDefense.Scripts.Towers
         private readonly Transform _transform;
         private readonly SignalBus _signalBus;
 
-        private Collider2D _targetCollider;
         private Collider2D[] _results = new Collider2D[10];
-        public bool HasTarget => _targetCollider != null && _results.Contains(_targetCollider);
-        public Transform Target => _targetCollider.transform;
         
+        private EnemyStateMachine _target;
+        public EnemyStateMachine Target
+        {
+            get => _target;
+            private set
+            {
+                _target = value;
+                _signalBus.Fire(new TowerTargetChangedSignal(value));
+            }
+        }
+        public bool HasTarget => Target != null && Target.IsAlive;
         public TowerTargetDetector(Settings settings, Transform transform, SignalBus signalBus)
         {
             _settings = settings;
@@ -35,25 +44,19 @@ namespace TowerDefense.Scripts.Towers
 
             if (HasTarget)
                 return;
-
-            FindTargetInRange();
+            
+            SearchForTarget();
         }
 
-        private void FindTargetInRange()
+        private void SearchForTarget()
         {
             foreach (var result in _results)
             {
                 if (result == null)
                     continue;
 
-                SetTarget(result);
+                Target = result.GetComponent<EnemyStateMachine>();
             }
-        }
-
-        private void SetTarget(Collider2D result)
-        {
-            _targetCollider = result;
-            _signalBus.Fire(new TowerTargetChangedSignal(Target));
         }
 
         public void DrawRangeCircle(Vector3 center, int segments)
