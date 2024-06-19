@@ -35,17 +35,13 @@ namespace TowerDefense.Scripts.Towers
 
         public void Tick()
         {
+            if (Target && !Target.IsAlive)
+                Target = null;
+
             if (HasTarget)
-            {
-                if (!Target.IsAlive)
-                {
-                    Target = null;
-                }
-            } 
-            else
-            {
-                SearchForTarget();
-            }
+                return;
+            
+            SearchForTarget();
         }
 
         private void SearchForTarget()
