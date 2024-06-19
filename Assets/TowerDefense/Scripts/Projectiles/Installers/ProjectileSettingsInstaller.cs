@@ -4,8 +4,8 @@ using Zenject;
 
 namespace TowerDefense.Scripts.Projectiles.Installers
 {
-    [CreateAssetMenu(fileName = "TowerProjectileSettingsInstaller", menuName = "Installers/TowerProjectileSettingsInstaller")]
-    public class TowerProjectileSettingsInstaller : ScriptableObjectInstaller<TowerProjectileSettingsInstaller>
+    [CreateAssetMenu(fileName = "ProjectileSettingsInstaller", menuName = "Installers/ProjectileSettingsInstaller")]
+    public class ProjectileSettingsInstaller : ScriptableObjectInstaller<ProjectileSettingsInstaller>
     {
         [SerializeField] private Settings settings;
         
@@ -17,7 +17,7 @@ namespace TowerDefense.Scripts.Projectiles.Installers
         [Serializable]
         public class Settings
         {
-            [field: SerializeField] public TowerProjectileMovement.Settings Movement { get; private set; }
+            [field: SerializeField] public ProjectileMovementHandler.Settings Movement { get; private set; }
         }
     }
 }

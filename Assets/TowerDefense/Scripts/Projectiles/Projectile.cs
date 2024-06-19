@@ -4,18 +4,18 @@ using Zenject;
 
 namespace TowerDefense.Scripts.Projectiles
 {
-    public class TowerProjectile : MonoBehaviour
+    public class Projectile : MonoBehaviour
     {
         private Transform _target;
         
         private Pool _pool;
-        private TowerProjectileMovement _movement;
+        private ProjectileMovementHandler _movementHandler;
         
         [Inject]
-        private void Construct(Pool pool, TowerProjectileMovement movement)
+        private void Construct(Pool pool, ProjectileMovementHandler movementHandler)
         {
             _pool = pool;
-            _movement = movement;
+            _movementHandler = movementHandler;
         }
 
         private void SetTarget(Transform target)
@@ -27,7 +27,7 @@ namespace TowerDefense.Scripts.Projectiles
         {
             if (_target != null)
             {
-                _movement.FollowTarget(_target.position);
+                _movementHandler.FollowTarget(_target.position);
             }
         }
         
@@ -39,14 +39,14 @@ namespace TowerDefense.Scripts.Projectiles
             }
         }
 
-        public class Pool : MonoMemoryPool<Transform, TowerProjectile>
+        public class Pool : MonoMemoryPool<Transform, Projectile>
         {
-            protected override void Reinitialize(Transform target, TowerProjectile item)
+            protected override void Reinitialize(Transform target, Projectile item)
             {
                 item.SetTarget(target);
             }
 
-            protected override void OnDespawned(TowerProjectile item)
+            protected override void OnDespawned(Projectile item)
             {
                 base.OnDespawned(item);
                 item.SetTarget(null);

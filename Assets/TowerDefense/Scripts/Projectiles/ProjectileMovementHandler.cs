@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace TowerDefense.Scripts.Projectiles
 {
-    public class TowerProjectileMovement
+    public class ProjectileMovementHandler
     {
         private readonly Transform _transform;
         private readonly Settings _settings;
 
-        public TowerProjectileMovement(Transform transform, Settings settings)
+        public ProjectileMovementHandler(Transform transform, Settings settings)
         {
             _transform = transform;
             _settings = settings;

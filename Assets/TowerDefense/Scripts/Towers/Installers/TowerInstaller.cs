@@ -37,7 +37,7 @@ namespace TowerDefense.Scripts.Towers.Installers
 
         private void BindPools()
         {
-            Container.BindMemoryPool<TowerProjectile, TowerProjectile.Pool>()
+            Container.BindMemoryPool<Projectile, Projectile.Pool>()
                 .WithInitialSize(1)
                 .FromComponentInNewPrefab(projectilePrefab)
                 .UnderTransformGroup("Projectiles");

@@ -8,7 +8,7 @@ namespace TowerDefense.Scripts.Towers
     public class TowerAttackHandler : ITickable
     {
         private readonly TowerTargetDetector _targetDetector;
-        private readonly TowerProjectile.Pool _pool;
+        private readonly Projectile.Pool _pool;
         private readonly Settings _settings;
         private readonly Transform _transform;
 
@@ -17,7 +17,7 @@ namespace TowerDefense.Scripts.Towers
         
         public TowerAttackHandler(
             TowerTargetDetector targetDetector, 
-            TowerProjectile.Pool pool, 
+            Projectile.Pool pool, 
             Settings settings,
             Transform transform)
         {
