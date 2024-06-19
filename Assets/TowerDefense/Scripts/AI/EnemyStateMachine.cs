@@ -52,9 +52,15 @@ namespace TowerDefense.Scripts.AI
         }
 
         [Button("TakeDamage")]
-        internal void TakeDamage(float damage)
+        public void TakeDamage(float damage)
         {
             _healthHandler.TakeDamage(damage);
+        }
+        
+        [Button("Kill")]
+        public void Kill()
+        {
+            _healthHandler.Kill();
         }
 
         public void SetParentAndPosition(Transform parent, Vector3 position)
