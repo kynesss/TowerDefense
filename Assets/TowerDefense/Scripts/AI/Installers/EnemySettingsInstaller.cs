@@ -15,6 +15,7 @@ namespace TowerDefense.Scripts.AI.Installers
             Container.BindInstance(settings.Movement).IfNotBound();
             Container.BindInstance(settings.Health).IfNotBound();
             Container.BindInstance(settings.FollowState).IfNotBound();
+            Container.BindInstance(settings.DeathState).IfNotBound();
         }
 
         [Serializable]
@@ -23,6 +24,7 @@ namespace TowerDefense.Scripts.AI.Installers
             [field: SerializeField] public EnemyMovementHandler.Settings Movement { get; private set; }
             [field: SerializeField] public EnemyHealthHandler.Settings Health { get; private set; }
             [field: SerializeField] public EnemyFollowState.Settings FollowState { get; private set; }
+            [field: SerializeField] public EnemyDeathState.Settings DeathState { get; private set; }
         }
     }
 }
