@@ -10,12 +10,17 @@ namespace TowerDefense.Scripts.Projectiles
         
         private Pool _pool;
         private ProjectileMovementHandler _movementHandler;
+        private IProjectileDamageHandler _damageHandler;
         
         [Inject]
-        private void Construct(Pool pool, ProjectileMovementHandler movementHandler)
+        private void Construct(
+            Pool pool, 
+            ProjectileMovementHandler movementHandler,
+            IProjectileDamageHandler damageHandler)
         {
             _pool = pool;
             _movementHandler = movementHandler;
+            _damageHandler = damageHandler;
         }
 
         private void SetTarget(Transform target)
@@ -33,10 +38,8 @@ namespace TowerDefense.Scripts.Projectiles
         
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.gameObject.TryGetComponent<EnemyStateMachine>(out var enemy))
-            {
-                _pool.Despawn(this);
-            }
+            _damageHandler.ApplyDamage(other);
+            _pool.Despawn(this);
         }
 
         public class Pool : MonoMemoryPool<Transform, Projectile>

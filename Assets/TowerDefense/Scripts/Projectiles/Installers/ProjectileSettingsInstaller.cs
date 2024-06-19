@@ -12,12 +12,14 @@ namespace TowerDefense.Scripts.Projectiles.Installers
         public override void InstallBindings()
         {
             Container.BindInstance(settings.Movement).IfNotBound();
+            Container.BindInstance(settings.Installer).IfNotBound();
         }
 
         [Serializable]
         public class Settings
         {
             [field: SerializeField] public ProjectileMovementHandler.Settings Movement { get; private set; }
+            [field: SerializeField] public ProjectileInstaller.Settings Installer { get; private set; }
         }
     }
 }
