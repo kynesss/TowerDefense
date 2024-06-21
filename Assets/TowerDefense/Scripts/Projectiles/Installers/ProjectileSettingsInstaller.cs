@@ -14,6 +14,7 @@ namespace TowerDefense.Scripts.Projectiles.Installers
             Container.BindInstance(settings.Movement).IfNotBound();
             Container.BindInstance(settings.Installer).IfNotBound();
             Container.BindInstance(settings.ArrowDamage).IfNotBound();
+            Container.BindInstance(settings.StoneDamage).IfNotBound();
         }
 
         [Serializable]
@@ -22,6 +23,7 @@ namespace TowerDefense.Scripts.Projectiles.Installers
             [field: SerializeField] public ProjectileMovementHandler.Settings Movement { get; private set; }
             [field: SerializeField] public ProjectileInstaller.Settings Installer { get; private set; }
             [field: SerializeField] public ArrowDamageHandler.Settings ArrowDamage { get; private set; }
+            [field: SerializeField] public StoneDamageHandler.Settings StoneDamage { get; private set; }
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using TowerDefense.Scripts.Projectiles;
 using TowerDefense.Scripts.Towers.Signals;
 using UnityEngine;
@@ -10,6 +11,8 @@ namespace TowerDefense.Scripts.Towers.Installers
         [SerializeField] private GameObject projectilePrefab;
         [SerializeField] private Animator animator;
 
+        [Inject] private Settings _settings;
+        
         public override void InstallBindings()
         {
             BindSignals();
@@ -32,8 +35,23 @@ namespace TowerDefense.Scripts.Towers.Installers
         private void BindHandlers()
         {
             Container.BindInterfacesAndSelfTo<TowerTargetDetector>().AsSingle();
-            Container.BindInterfacesAndSelfTo<TowerAttackHandler>().AsSingle();
-            Container.BindInterfacesAndSelfTo<TowerAnimationHandler>().AsSingle();
+            Container.BindInterfacesTo<TowerAnimationHandler>().AsSingle();
+
+            switch (_settings.TowerType)
+            {
+                case TowerType.Archer:
+                    Container.BindInterfacesTo<ArcherTowerAttackHandler>().AsSingle();
+                    break;
+                case TowerType.Stone:
+                    Container.BindInterfacesTo<StoneTowerAttackHandler>().AsSingle();
+                    break;
+                case TowerType.Magic:
+                    break;
+                case TowerType.Support:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         private void BindPools()
@@ -42,6 +60,12 @@ namespace TowerDefense.Scripts.Towers.Installers
                 .WithInitialSize(1)
                 .FromComponentInNewPrefab(projectilePrefab)
                 .UnderTransformGroup("Projectiles");
+        }
+
+        [Serializable]
+        public class Settings
+        {
+            [field: SerializeField] public TowerType TowerType { get; private set; }
         }
     }
 }

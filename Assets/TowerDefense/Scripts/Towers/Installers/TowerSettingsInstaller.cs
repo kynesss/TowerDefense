@@ -13,13 +13,15 @@ namespace TowerDefense.Scripts.Towers.Installers
         {
             Container.BindInstance(settings.TargetDetector).IfNotBound();
             Container.BindInstance(settings.Attack).IfNotBound();
+            Container.BindInstance(settings.Installer).IfNotBound();
         }
 
         [Serializable]
         public class Settings
         {
             [field: SerializeField] public TowerTargetDetector.Settings TargetDetector { get; private set; }
-            [field: SerializeField] public TowerAttackHandler.Settings Attack { get; private set; }
+            [field: SerializeField] public ArcherTowerAttackHandler.Settings Attack { get; private set; }
+            [field: SerializeField] public TowerInstaller.Settings Installer { get; private set; }
         }
     }
 }

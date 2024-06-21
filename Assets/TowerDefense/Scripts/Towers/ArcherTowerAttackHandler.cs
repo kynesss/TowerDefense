@@ -5,7 +5,7 @@ using Zenject;
 
 namespace TowerDefense.Scripts.Towers
 {
-    public class TowerAttackHandler : ITickable
+    public class ArcherTowerAttackHandler : ITowerAttackHandler
     {
         private readonly TowerTargetDetector _targetDetector;
         private readonly Projectile.Pool _pool;
@@ -13,9 +13,9 @@ namespace TowerDefense.Scripts.Towers
         private readonly Transform _transform;
 
         private float _attackTimer;
-        private bool CanAttack => _targetDetector.HasTarget && _attackTimer <= 0f;
+        public bool CanAttack => _targetDetector.HasTarget && _attackTimer <= 0f;
         
-        public TowerAttackHandler(
+        public ArcherTowerAttackHandler(
             TowerTargetDetector targetDetector, 
             Projectile.Pool pool, 
             Settings settings,
@@ -39,7 +39,7 @@ namespace TowerDefense.Scripts.Towers
             }
         }
 
-        private void SpawnProjectile()
+        public void SpawnProjectile()
         {
             var spawnPosition =_transform.position + Vector3.up * _transform.lossyScale.x;
             var projectile = _pool.Spawn(_targetDetector.Target.transform);

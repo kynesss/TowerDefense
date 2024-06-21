@@ -21,11 +21,10 @@ namespace TowerDefense.Scripts.Projectiles.Installers
             switch (_settings.Type)
             {
                 case ProjectileType.Arrow:
-                {
                     Container.Bind<IProjectileDamageHandler>().To<ArrowDamageHandler>().AsSingle();
                     break;
-                }
                 case ProjectileType.Stone:
+                    Container.Bind<IProjectileDamageHandler>().To<StoneDamageHandler>().AsSingle();
                     break;
                 case ProjectileType.Magic:
                     break;
