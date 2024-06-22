@@ -55,6 +55,11 @@ namespace TowerDefense.Scripts.Projectiles
             _damageHandler.ApplyDamage(other);
             Despawn();
         }
+
+        public void SetPosition(Vector3 position)
+        {
+            transform.position = position;
+        }
         
         public class Pool : MonoMemoryPool<Transform, Projectile>
         {

@@ -35,23 +35,9 @@ namespace TowerDefense.Scripts.Towers.Installers
         private void BindHandlers()
         {
             Container.BindInterfacesAndSelfTo<TowerTargetDetector>().AsSingle();
+            
             Container.BindInterfacesTo<TowerAnimationHandler>().AsSingle();
-
-            switch (_settings.TowerType)
-            {
-                case TowerType.Archer:
-                    Container.BindInterfacesTo<ArcherTowerAttackHandler>().AsSingle();
-                    break;
-                case TowerType.Stone:
-                    Container.BindInterfacesTo<StoneTowerAttackHandler>().AsSingle();
-                    break;
-                case TowerType.Magic:
-                    break;
-                case TowerType.Support:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+            Container.BindInterfacesTo<TowerAttackHandler>().AsSingle();
         }
 
         private void BindPools()

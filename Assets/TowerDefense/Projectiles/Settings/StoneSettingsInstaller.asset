@@ -19,3 +19,5 @@ MonoBehaviour:
       <Type>k__BackingField: 1
     <ArrowDamage>k__BackingField:
       <Damage>k__BackingField: 10
+    <StoneDamage>k__BackingField:
+      <Damage>k__BackingField: 10
