@@ -8,13 +8,13 @@ namespace TowerDefense.Scripts.Projectiles
         private Transform _target;
         
         private Pool _pool;
-        private ProjectileMovementHandler _movementHandler;
+        private ArrowMovementHandler _movementHandler;
         private IProjectileDamageHandler _damageHandler;
         
         [Inject]
         private void Construct(
             Pool pool, 
-            ProjectileMovementHandler movementHandler,
+            ArrowMovementHandler movementHandler,
             IProjectileDamageHandler damageHandler)
         {
             _pool = pool;

@@ -34,8 +34,7 @@ namespace TowerDefense.Scripts.Towers.Installers
 
         private void BindHandlers()
         {
-            Container.BindInterfacesAndSelfTo<TowerTargetDetector>().AsSingle();
-            
+            Container.BindInterfacesTo<TowerTargetDetector>().AsSingle();
             Container.BindInterfacesTo<TowerAnimationHandler>().AsSingle();
             Container.BindInterfacesTo<TowerAttackHandler>().AsSingle();
         }

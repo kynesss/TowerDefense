@@ -20,7 +20,7 @@ namespace TowerDefense.Scripts.Projectiles.Installers
         [Serializable]
         public class Settings
         {
-            [field: SerializeField] public ProjectileMovementHandler.Settings Movement { get; private set; }
+            [field: SerializeField] public ArrowMovementHandler.Settings Movement { get; private set; }
             [field: SerializeField] public ProjectileInstaller.Settings Installer { get; private set; }
             [field: SerializeField] public ArrowDamageHandler.Settings ArrowDamage { get; private set; }
             [field: SerializeField] public StoneDamageHandler.Settings StoneDamage { get; private set; }

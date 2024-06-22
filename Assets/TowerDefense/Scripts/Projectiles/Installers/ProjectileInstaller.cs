@@ -11,7 +11,6 @@ namespace TowerDefense.Scripts.Projectiles.Installers
         public override void InstallBindings()
         {
             Container.BindInstance(transform).AsSingle();
-            Container.Bind<ProjectileMovementHandler>().AsSingle();
             
             BindHandlersByType();            
         }
@@ -22,9 +21,11 @@ namespace TowerDefense.Scripts.Projectiles.Installers
             {
                 case ProjectileType.Arrow:
                     Container.Bind<IProjectileDamageHandler>().To<ArrowDamageHandler>().AsSingle();
+                    Container.Bind<ArrowMovementHandler>().AsSingle();
                     break;
                 case ProjectileType.Stone:
                     Container.Bind<IProjectileDamageHandler>().To<StoneDamageHandler>().AsSingle();
+                    Container.Bind<StoneMovementHandler>().AsSingle();
                     break;
                 case ProjectileType.Magic:
                     break;
