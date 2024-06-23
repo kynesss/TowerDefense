@@ -1,59 +1,38 @@
-﻿using UnityEngine;
+﻿using EasyButtons;
+using UnityEngine;
 using Zenject;
 
 namespace TowerDefense.Scripts.Projectiles
 {
     public class Projectile : MonoBehaviour
     {
-        private Transform _target;
-        
         private Pool _pool;
-        private ArrowMovementHandler _movementHandler;
         private IProjectileDamageHandler _damageHandler;
-        
+        public Transform Target { get; private set; }
+        public Rigidbody2D Rigidbody { get; private set; }
+
         [Inject]
         private void Construct(
             Pool pool, 
-            ArrowMovementHandler movementHandler,
-            IProjectileDamageHandler damageHandler)
+            IProjectileDamageHandler damageHandler, 
+            Rigidbody2D rb)
         {
             _pool = pool;
-            _movementHandler = movementHandler;
             _damageHandler = damageHandler;
-        }
-        
-        private void SetTarget(Transform target)
-        {
-            _target = target;
+            Rigidbody = rb;
         }
 
-        private void Despawn()
+        [Button]
+        public void Despawn()
         {
             if (gameObject.activeSelf)
                 _pool.Despawn(this);
         }
-        
-        private void Update()
-        {
-            if (_target == null) 
-                return;
-
-            var position = transform.position;
-            var targetPosition = _target.position;
-
-            if (Vector3.SqrMagnitude(position - targetPosition) < 0.05f)
-            {
-                Despawn();
-                return;
-            }
-            
-            _movementHandler.FollowTarget(targetPosition);
-        }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            _damageHandler.ApplyDamage(other);
-            Despawn();
+            //_damageHandler.ApplyDamage(other);
+            //Despawn();
         }
 
         public void SetPosition(Vector3 position)
@@ -65,13 +44,13 @@ namespace TowerDefense.Scripts.Projectiles
         {
             protected override void Reinitialize(Transform target, Projectile item)
             {
-                item.SetTarget(target);
+                item.Target = target;
             }
 
             protected override void OnDespawned(Projectile item)
             {
                 base.OnDespawned(item);
-                item.SetTarget(null);
+                item.Target = null;
             }
         }
     }

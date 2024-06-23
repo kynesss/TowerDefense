@@ -1,4 +1,5 @@
 ﻿using System;
+using EasyButtons;
 using TowerDefense.Scripts.Projectiles;
 using TowerDefense.Scripts.Towers.Signals;
 using UnityEngine;
@@ -63,7 +64,7 @@ namespace TowerDefense.Scripts.Towers
                 _attackTimer -= Time.deltaTime;
             }
         }
-
+        
         private void SpawnProjectile()
         {
             var spawnPosition = _transform.position + _settings.SpawnOffset;

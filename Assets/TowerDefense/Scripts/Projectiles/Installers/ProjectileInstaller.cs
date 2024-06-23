@@ -8,11 +8,20 @@ namespace TowerDefense.Scripts.Projectiles.Installers
     {
         [Inject] private Settings _settings;
         
+        private Rigidbody2D _rigidbody;
+
         public override void InstallBindings()
         {
-            Container.BindInstance(transform).AsSingle();
+            BindInstances();
+            BindHandlersByType();
+        }
+
+        private void BindInstances()
+        {
+            _rigidbody = GetComponent<Rigidbody2D>();
             
-            BindHandlersByType();            
+            Container.BindInstance(transform).AsSingle();
+            Container.BindInstance(_rigidbody).AsSingle();
         }
 
         private void BindHandlersByType()
@@ -21,11 +30,11 @@ namespace TowerDefense.Scripts.Projectiles.Installers
             {
                 case ProjectileType.Arrow:
                     Container.Bind<IProjectileDamageHandler>().To<ArrowDamageHandler>().AsSingle();
-                    Container.Bind<ArrowMovementHandler>().AsSingle();
+                    Container.BindInterfacesTo<ArrowMovementHandler>().AsSingle();
                     break;
                 case ProjectileType.Stone:
                     Container.Bind<IProjectileDamageHandler>().To<StoneDamageHandler>().AsSingle();
-                    Container.Bind<StoneMovementHandler>().AsSingle();
+                    Container.BindInterfacesTo<StoneMovementHandler>().AsSingle();
                     break;
                 case ProjectileType.Magic:
                     break;
