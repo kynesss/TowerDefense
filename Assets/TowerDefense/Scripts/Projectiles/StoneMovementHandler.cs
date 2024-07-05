@@ -4,12 +4,13 @@ using Zenject;
 
 namespace TowerDefense.Scripts.Projectiles
 {
-    public class StoneMovementHandler : IInitializable, IFixedTickable
+    public class StoneMovementHandler : IInitializable, IFixedTickable, ITickable
     {
         private readonly Projectile _projectile;
         private readonly Settings _settings;
 
         private bool _launched;
+        private Vector3 _targetPosition;
         
         public StoneMovementHandler(Projectile projectile, Settings settings)
         {
@@ -31,13 +32,18 @@ namespace TowerDefense.Scripts.Projectiles
             }
         }
 
+        public void Tick()
+        {
+            DespawnIfReachedTarget();
+        }
+
         private void Launch()
         {
             var startPosition = _projectile.transform.position;
-            var targetPosition = _projectile.Target.position;
+            _targetPosition = _projectile.Target.position;
 
-            var distanceX = Mathf.Abs(targetPosition.x - startPosition.x);
-            var distanceY = targetPosition.y - startPosition.y;
+            var distanceX = Mathf.Abs(_targetPosition.x - startPosition.x);
+            var distanceY = _targetPosition.y - startPosition.y;
             
             var gravity = Physics2D.gravity.y;
             var tanAngle = Mathf.Tan(_settings.LaunchAngle * Mathf.Deg2Rad);
@@ -45,9 +51,8 @@ namespace TowerDefense.Scripts.Projectiles
             var velocityX = Mathf.Sqrt(gravity * distanceX * distanceX / (2f * (distanceY - distanceX * tanAngle)));
             var velocityY = tanAngle * velocityX;
             
-            velocityX = targetPosition.x > startPosition.x ? velocityX : -velocityX;
-
-
+            velocityX = _targetPosition.x > startPosition.x ? velocityX : -velocityX;
+            
             if (float.IsNaN(velocityX))
             {
                 Debug.LogError($"VelX {velocityX} is Nan!");
@@ -61,6 +66,14 @@ namespace TowerDefense.Scripts.Projectiles
             }
             
             _projectile.Rigidbody.velocity = new Vector2(velocityX, velocityY);
+        }
+
+        private void DespawnIfReachedTarget()
+        {
+            var direction = _targetPosition - _projectile.transform.position;
+
+            if (Vector3.SqrMagnitude(direction) < 0.05f) 
+                _projectile.Despawn();
         }
 
         [Serializable]
