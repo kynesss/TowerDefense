@@ -1,4 +1,5 @@
-﻿using EasyButtons;
+﻿using System;
+using EasyButtons;
 using UnityEngine;
 using Zenject;
 
@@ -10,6 +11,7 @@ namespace TowerDefense.Scripts.Projectiles
         private IProjectileDamageHandler _damageHandler;
         public Transform Target { get; private set; }
         public Rigidbody2D Rigidbody { get; private set; }
+        public event Action<Transform> TargetChanged;  
 
         [Inject]
         private void Construct(
@@ -39,19 +41,16 @@ namespace TowerDefense.Scripts.Projectiles
         {
             transform.position = position;
         }
-        
-        public class Pool : MonoMemoryPool<Transform, Projectile>
-        {
-            protected override void Reinitialize(Transform target, Projectile item)
-            {
-                item.Target = target;
-            }
 
-            protected override void OnDespawned(Projectile item)
-            {
-                base.OnDespawned(item);
-                item.Target = null;
-            }
+        public void SetTarget(Transform target)
+        {
+            Target = target;
+            TargetChanged?.Invoke(target);
+        }
+        
+        public class Pool : MonoMemoryPool<Projectile>
+        {
+
         }
     }
 }

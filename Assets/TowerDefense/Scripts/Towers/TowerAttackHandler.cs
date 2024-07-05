@@ -55,8 +55,10 @@ namespace TowerDefense.Scripts.Towers
         private void SpawnProjectile()
         {
             var spawnPosition = _transform.position + _settings.SpawnOffset;
-            var projectile = _pool.Spawn(_target);
+            
+            var projectile = _pool.Spawn();
             projectile.SetPosition(spawnPosition);
+            projectile.SetTarget(_target);
 
             _attackTimer = _settings.Rate;
         }

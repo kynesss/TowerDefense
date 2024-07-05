@@ -18,7 +18,7 @@ namespace TowerDefense.Scripts.Projectiles
         {
             if (collision.TryGetComponent<EnemyStateMachine>(out var enemy))
             {
-                enemy.TakeDamage(_settings.Damage);
+                enemy.TakeDamage(0);
             }
         }
         

@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: StoneSettingsInstaller
   m_EditorClassIdentifier: 
   settings:
-    <Movement>k__BackingField:
-      <Speed>k__BackingField: 10
     <Installer>k__BackingField:
       <Type>k__BackingField: 1
+    <ArrowMovement>k__BackingField:
+      <Speed>k__BackingField: 10
+    <StoneMovement>k__BackingField:
+      <LaunchAngle>k__BackingField: 80
     <ArrowDamage>k__BackingField:
       <Damage>k__BackingField: 10
     <StoneDamage>k__BackingField:

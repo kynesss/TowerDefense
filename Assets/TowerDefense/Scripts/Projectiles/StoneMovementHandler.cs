@@ -4,31 +4,36 @@ using Zenject;
 
 namespace TowerDefense.Scripts.Projectiles
 {
-    public class StoneMovementHandler : IInitializable, IFixedTickable, ITickable
+    public class StoneMovementHandler : IInitializable, ITickable, IDisposable
     {
         private readonly Projectile _projectile;
         private readonly Settings _settings;
+        private readonly SignalBus _signalBus;
 
-        private bool _launched;
         private Vector3 _targetPosition;
         
-        public StoneMovementHandler(Projectile projectile, Settings settings)
+        public StoneMovementHandler(Projectile projectile, Settings settings, SignalBus signalBus)
         {
             _projectile = projectile;
             _settings = settings;
+            _signalBus = signalBus;
         }
 
         public void Initialize()
         {
-            _launched = false;
+            _projectile.TargetChanged += Projectile_OnTargetChanged;
         }
 
-        public void FixedTick()
+        public void Dispose()
         {
-            if (_launched == false)
+            _projectile.TargetChanged -= Projectile_OnTargetChanged;
+        }
+
+        private void Projectile_OnTargetChanged(Transform target)
+        {
+            if (target != null)
             {
-                Launch();
-                _launched = true;
+                Launch(target.position);
             }
         }
 
@@ -37,10 +42,10 @@ namespace TowerDefense.Scripts.Projectiles
             DespawnIfReachedTarget();
         }
 
-        private void Launch()
+        private void Launch(Vector3 targetPosition)
         {
             var startPosition = _projectile.transform.position;
-            _targetPosition = _projectile.Target.position;
+            _targetPosition = targetPosition;
 
             var distanceX = Mathf.Abs(_targetPosition.x - startPosition.x);
             var distanceY = _targetPosition.y - startPosition.y;
