@@ -1,5 +1,4 @@
 ﻿using System;
-using EasyButtons;
 using TowerDefense.Scripts.Projectiles;
 using TowerDefense.Scripts.Towers.Signals;
 using UnityEngine;
@@ -53,6 +52,15 @@ namespace TowerDefense.Scripts.Towers
             }
         }
 
+        private void SpawnProjectile()
+        {
+            var spawnPosition = _transform.position + _settings.SpawnOffset;
+            var projectile = _pool.Spawn(_target);
+            projectile.SetPosition(spawnPosition);
+
+            _attackTimer = _settings.Rate;
+        }
+
         public void Tick()
         {
             if (CanAttack)
@@ -64,14 +72,10 @@ namespace TowerDefense.Scripts.Towers
                 _attackTimer -= Time.deltaTime;
             }
         }
-        
-        private void SpawnProjectile()
-        {
-            var spawnPosition = _transform.position + _settings.SpawnOffset;
-            var projectile = _pool.Spawn(_target);
-            projectile.SetPosition(spawnPosition);
 
-            _attackTimer = _settings.Rate;
+        public void AttackInstantly()
+        {
+            _attackTimer = 0f;
         }
 
         [Serializable]
