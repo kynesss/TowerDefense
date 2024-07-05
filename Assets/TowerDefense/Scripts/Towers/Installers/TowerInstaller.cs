@@ -10,8 +10,6 @@ namespace TowerDefense.Scripts.Towers.Installers
     {
         [SerializeField] private GameObject projectilePrefab;
         [SerializeField] private Animator animator;
-
-        [Inject] private Settings _settings;
         
         public override void InstallBindings()
         {
