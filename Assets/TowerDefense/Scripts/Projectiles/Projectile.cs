@@ -31,8 +31,8 @@ namespace TowerDefense.Scripts.Projectiles
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            //_damageHandler.ApplyDamage(other);
-            //Despawn();
+            _damageHandler.ApplyDamage(other);
+            Despawn();
         }
 
         public void SetPosition(Vector3 position)

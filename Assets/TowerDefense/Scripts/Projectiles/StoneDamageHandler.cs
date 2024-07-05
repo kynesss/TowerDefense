@@ -1,4 +1,5 @@
 ﻿using System;
+using TowerDefense.Scripts.AI;
 using UnityEngine;
 
 namespace TowerDefense.Scripts.Projectiles
@@ -12,9 +13,13 @@ namespace TowerDefense.Scripts.Projectiles
             _settings = settings;
         }
         
+        // TODO: AOE Damage
         public void ApplyDamage(Collider2D collision)
         {
-               
+            if (collision.TryGetComponent<EnemyStateMachine>(out var enemy))
+            {
+                enemy.TakeDamage(_settings.Damage);
+            }
         }
         
         [Serializable]
