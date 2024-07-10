@@ -19,7 +19,13 @@ MonoBehaviour:
       <Speed>k__BackingField: 10
     <StoneMovement>k__BackingField:
       <LaunchAngle>k__BackingField: 80
+      <MaxDistanceToTarget>k__BackingField: 0.05
+      <MinYPosition>k__BackingField: -10
     <ArrowDamage>k__BackingField:
       <Damage>k__BackingField: 10
     <StoneDamage>k__BackingField:
       <Damage>k__BackingField: 10
+      <CollisionRadius>k__BackingField: 3
+      <CollisionLayer>k__BackingField:
+        serializedVersion: 2
+        m_Bits: 256

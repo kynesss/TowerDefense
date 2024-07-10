@@ -29,6 +29,7 @@ namespace TowerDefense.Scripts.Projectiles.Installers
         private void BindHandlers()
         {
             Container.Bind<ProjectileAnimationHandler>().AsSingle();
+            Container.Bind<ProjectilePhysicsHandler>().AsSingle();
             
             switch (_settings.Type)
             {

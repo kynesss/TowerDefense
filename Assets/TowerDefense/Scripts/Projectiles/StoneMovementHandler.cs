@@ -7,14 +7,21 @@ namespace TowerDefense.Scripts.Projectiles
     public class StoneMovementHandler : IInitializable, ITickable, IDisposable
     {
         private readonly Projectile _projectile;
+        private readonly ProjectilePhysicsHandler _physicsHandler;
+        private readonly IProjectileDamageHandler _damageHandler;
         private readonly Settings _settings;
 
         private Vector3 _targetPosition;
         
         public StoneMovementHandler(
-            Projectile projectile, Settings settings)
+            Projectile projectile, 
+            ProjectilePhysicsHandler physicsHandler,
+            IProjectileDamageHandler damageHandler,
+            Settings settings)
         {
             _projectile = projectile;
+            _physicsHandler = physicsHandler;
+            _damageHandler = damageHandler;
             _settings = settings;
         }
 
@@ -70,7 +77,8 @@ namespace TowerDefense.Scripts.Projectiles
                 return;
             }
             
-            _projectile.Rigidbody.velocity = new Vector2(velocityX, velocityY);
+            var velocity = new Vector2(velocityX, velocityY);
+            _physicsHandler.SetVelocity(velocity);
         }
 
         private void DespawnIfReachedTarget()

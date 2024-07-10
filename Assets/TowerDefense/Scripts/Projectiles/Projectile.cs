@@ -10,21 +10,21 @@ namespace TowerDefense.Scripts.Projectiles
         private Pool _pool;
         private IProjectileDamageHandler _damageHandler;
         private ProjectileAnimationHandler _animationHandler;
+        private ProjectilePhysicsHandler _physicsHandler;
         public Transform Target { get; private set; }
-        public Rigidbody2D Rigidbody { get; private set; }
-        public event Action<Transform> TargetChanged;  
+        public event Action<Transform> TargetChanged;
 
         [Inject]
         private void Construct(
-            Pool pool, 
-            IProjectileDamageHandler damageHandler, 
-            Rigidbody2D rb,
-            ProjectileAnimationHandler animationHandler)
+            Pool pool,
+            IProjectileDamageHandler damageHandler,
+            ProjectileAnimationHandler animationHandler,
+            ProjectilePhysicsHandler physicsHandler)
         {
             _pool = pool;
             _damageHandler = damageHandler;
-            Rigidbody = rb;
             _animationHandler = animationHandler;
+            _physicsHandler = physicsHandler;
         }
 
         [Button]
@@ -34,17 +34,20 @@ namespace TowerDefense.Scripts.Projectiles
                 _pool.Despawn(this);
         }
 
-        public void OnHit()
+        public void OnHit(Collider2D other = null)
         {
-            Rigidbody.simulated = false;
-            _animationHandler.PlayHitAnimation();   
+            _physicsHandler.SetPhysicsEnabled(false);
+            _animationHandler.PlayHitAnimation();
+            
+            if (other != null)
+                _damageHandler.ApplyDamage(other);
+            else
+                _damageHandler.ApplyDamage();
         }
         
-        // TODO: PhysicsHandler
         private void OnTriggerEnter2D(Collider2D other)
         {
-            OnHit();
-            _damageHandler.ApplyDamage(other);
+            OnHit(other);
         }
 
         public void SetPosition(Vector3 position)
@@ -62,7 +65,7 @@ namespace TowerDefense.Scripts.Projectiles
         {
             protected override void Reinitialize(Projectile item)
             {
-                item.Rigidbody.simulated = true;
+                item._physicsHandler.SetPhysicsEnabled(true);
             }
         }
     }
