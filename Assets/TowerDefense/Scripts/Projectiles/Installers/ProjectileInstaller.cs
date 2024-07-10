@@ -9,23 +9,28 @@ namespace TowerDefense.Scripts.Projectiles.Installers
         [Inject] private Settings _settings;
         
         private Rigidbody2D _rigidbody;
+        private Animator _animator;
 
         public override void InstallBindings()
         {
             BindInstances();
-            BindHandlersByType();
+            BindHandlers();
         }
 
         private void BindInstances()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
+            _animator = GetComponent<Animator>();
             
             Container.BindInstance(transform).AsSingle();
             Container.BindInstance(_rigidbody).AsSingle();
+            Container.BindInstance(_animator).AsSingle();
         }
 
-        private void BindHandlersByType()
+        private void BindHandlers()
         {
+            Container.Bind<ProjectileAnimationHandler>().AsSingle();
+            
             switch (_settings.Type)
             {
                 case ProjectileType.Arrow:

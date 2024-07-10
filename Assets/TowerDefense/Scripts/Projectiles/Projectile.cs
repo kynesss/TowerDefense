@@ -9,6 +9,7 @@ namespace TowerDefense.Scripts.Projectiles
     {
         private Pool _pool;
         private IProjectileDamageHandler _damageHandler;
+        private ProjectileAnimationHandler _animationHandler;
         public Transform Target { get; private set; }
         public Rigidbody2D Rigidbody { get; private set; }
         public event Action<Transform> TargetChanged;  
@@ -17,11 +18,13 @@ namespace TowerDefense.Scripts.Projectiles
         private void Construct(
             Pool pool, 
             IProjectileDamageHandler damageHandler, 
-            Rigidbody2D rb)
+            Rigidbody2D rb,
+            ProjectileAnimationHandler animationHandler)
         {
             _pool = pool;
             _damageHandler = damageHandler;
             Rigidbody = rb;
+            _animationHandler = animationHandler;
         }
 
         [Button]
@@ -31,10 +34,17 @@ namespace TowerDefense.Scripts.Projectiles
                 _pool.Despawn(this);
         }
 
+        public void OnHit()
+        {
+            Rigidbody.simulated = false;
+            _animationHandler.PlayHitAnimation();   
+        }
+        
+        // TODO: PhysicsHandler
         private void OnTriggerEnter2D(Collider2D other)
         {
+            OnHit();
             _damageHandler.ApplyDamage(other);
-            Despawn();
         }
 
         public void SetPosition(Vector3 position)
@@ -50,7 +60,10 @@ namespace TowerDefense.Scripts.Projectiles
         
         public class Pool : MonoMemoryPool<Projectile>
         {
-
+            protected override void Reinitialize(Projectile item)
+            {
+                item.Rigidbody.simulated = true;
+            }
         }
     }
 }

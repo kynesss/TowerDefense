@@ -8,15 +8,14 @@ namespace TowerDefense.Scripts.Projectiles
     {
         private readonly Projectile _projectile;
         private readonly Settings _settings;
-        private readonly SignalBus _signalBus;
 
         private Vector3 _targetPosition;
         
-        public StoneMovementHandler(Projectile projectile, Settings settings, SignalBus signalBus)
+        public StoneMovementHandler(
+            Projectile projectile, Settings settings)
         {
             _projectile = projectile;
             _settings = settings;
-            _signalBus = signalBus;
         }
 
         public void Initialize()
@@ -77,8 +76,8 @@ namespace TowerDefense.Scripts.Projectiles
         {
             var direction = _targetPosition - _projectile.transform.position;
 
-            if (Vector3.SqrMagnitude(direction) < 0.05f) 
-                _projectile.Despawn();
+            if (Vector3.SqrMagnitude(direction) < 0.05f)
+                _projectile.OnHit();
         }
 
         [Serializable]
