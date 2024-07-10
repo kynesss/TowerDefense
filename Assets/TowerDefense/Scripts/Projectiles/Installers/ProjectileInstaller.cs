@@ -8,8 +8,6 @@ namespace TowerDefense.Scripts.Projectiles.Installers
     {
         [Inject] private Settings _settings;
         
-        private Rigidbody2D _rigidbody;
-        private Animator _animator;
 
         public override void InstallBindings()
         {
@@ -19,12 +17,13 @@ namespace TowerDefense.Scripts.Projectiles.Installers
 
         private void BindInstances()
         {
-            _rigidbody = GetComponent<Rigidbody2D>();
-            _animator = GetComponent<Animator>();
-            
+            var rb = GetComponent<Rigidbody2D>();
+            Container.BindInstance(rb).AsSingle();
+
+            if (TryGetComponent<Animator>(out var animator)) 
+                Container.BindInstance(animator).AsSingle();
+
             Container.BindInstance(transform).AsSingle();
-            Container.BindInstance(_rigidbody).AsSingle();
-            Container.BindInstance(_animator).AsSingle();
         }
 
         private void BindHandlers()
