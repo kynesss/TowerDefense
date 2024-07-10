@@ -39,6 +39,7 @@ namespace TowerDefense.Scripts.Projectiles
         public void Tick()
         {
             DespawnIfReachedTarget();
+            DespawnIfBeyondMap();
         }
 
         private void Launch(Vector3 targetPosition)
@@ -76,14 +77,22 @@ namespace TowerDefense.Scripts.Projectiles
         {
             var direction = _targetPosition - _projectile.transform.position;
 
-            if (Vector3.SqrMagnitude(direction) < 0.05f)
+            if (Vector3.SqrMagnitude(direction) < _settings.MaxDistanceToTarget)
                 _projectile.OnHit();
+        }
+
+        private void DespawnIfBeyondMap()
+        {
+            if (_projectile.transform.position.y < _settings.MinYPosition) 
+                _projectile.Despawn();
         }
 
         [Serializable]
         public class Settings
         {
             [field: SerializeField] public float LaunchAngle { get; private set; } = 45f;
+            [field: SerializeField] public float MaxDistanceToTarget { get; private set; } = 0.05f;
+            [field: SerializeField] public float MinYPosition { get; private set; } = -10f;
         }
     }
 }
